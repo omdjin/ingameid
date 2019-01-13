@@ -1,4 +1,4 @@
-import { products } from "../../stores";
+import { products } from '../../stores';
 
 export const getProduct = slug => {
   const product = products.find(product => product.slug === slug);
@@ -6,4 +6,4 @@ export const getProduct = slug => {
   return product;
 };
 
-export const test = () => "uye";
+export const test = () => 'uye';
