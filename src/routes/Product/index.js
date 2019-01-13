@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getProduct } from '../../helpers/product';
 import NotFound from '../../components/NotFound';
 
@@ -13,7 +12,12 @@ const Product = ({ match }) => {
 
   return (
     <div>
-      Product Detail Component <Link to="/">Home</Link>
+      <div style={{ width: '40%' }}>
+        <h1>{product.title}</h1>
+      </div>
+      <div style={{ width: '60%' }}>
+        <img src={product.imageUrl} alt={product.title} />
+      </div>
     </div>
   );
 };

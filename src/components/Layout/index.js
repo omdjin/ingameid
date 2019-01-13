@@ -1,9 +1,14 @@
 import { node } from 'prop-types';
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
-import layoutClass from './styles';
+import { jsx, Global } from '@emotion/core';
+import { globalStyles, layoutClass } from './styles';
 
-const Layout = ({ children }) => <section css={layoutClass}>{children}</section>;
+const Layout = ({ children }) => (
+  <section css={layoutClass}>
+    <Global styles={globalStyles} />
+    {children}
+  </section>
+);
 
 Layout.propTypes = {
   children: node.isRequired,

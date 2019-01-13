@@ -6,4 +6,4 @@ export const getProduct = slug => {
   return product;
 };
 
-export const test = () => 'uye';
+export const getProducts = () => products;
