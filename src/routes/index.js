@@ -9,7 +9,7 @@ const Routes = ({ history, location, match }) => (
   <div>
     <segment>Header</segment>
     <Switch>
-      <Route path="/:domain" component={ProductContainer} />
+      <Route path="/:slug" component={ProductContainer} />
       <Route exact path="/" component={HomeComponent} />
     </Switch>
     <segment>Footer</segment>
