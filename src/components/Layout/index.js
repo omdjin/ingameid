@@ -1,9 +1,10 @@
-import React from "react";
 import { node } from "prop-types";
-import "./styles.css";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import layoutClass from "./styles";
 
 const Layout = ({ children }) => (
-  <section className="layout">{children}</section>
+  <section css={layoutClass}>{children}</section>
 );
 
 Layout.propTypes = {
