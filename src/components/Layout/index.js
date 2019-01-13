@@ -1,14 +1,12 @@
-import { node } from "prop-types";
+import { node } from 'prop-types';
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
-import layoutClass from "./styles";
+import { jsx } from '@emotion/core';
+import layoutClass from './styles';
 
-const Layout = ({ children }) => (
-  <section css={layoutClass}>{children}</section>
-);
+const Layout = ({ children }) => <section css={layoutClass}>{children}</section>;
 
 Layout.propTypes = {
-  children: node.isRequired
+  children: node.isRequired,
 };
 
 export default Layout;

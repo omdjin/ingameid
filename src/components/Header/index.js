@@ -1,8 +1,7 @@
-// import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
-import { headerClass, headerWrapper } from "./styles";
+import { jsx } from '@emotion/core';
+import { headerClass, headerWrapper } from './styles';
 
 const Header = () => (
   <header css={headerClass}>

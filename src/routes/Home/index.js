@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./styles.css";
+import './styles.css';
 
 const Home = () => (
   <div className="main_content">

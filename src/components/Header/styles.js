@@ -1,6 +1,6 @@
-import { css } from "@emotion/core";
-import { flex, whiteBg } from "../../styles/misc";
-import logoImg from "./assets/logo.png";
+import { css } from '@emotion/core';
+import { flex, whiteBg } from '../../styles/misc';
+import logoImg from './assets/logo.png';
 
 export const headerClass = css`
   order: 0;
