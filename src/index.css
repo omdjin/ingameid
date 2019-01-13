@@ -8,6 +8,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  min-height: 100vh;
+a,
+a:visited {
+  color: #51a5ef;
+  text-decoration: none;
+}
+
+article,
+div,
+footer {
+  align-items: stretch;
+  border: 0 solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+main {
+  padding-top: 60px;
+  order: 1;
+  flex-grow: 1;
+}
+
+.flexGrow {
+  flex-grow: 1;
 }
