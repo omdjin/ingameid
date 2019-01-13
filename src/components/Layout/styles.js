@@ -1,12 +1,52 @@
 import { css } from '@emotion/core';
+import { flex, flexGrow } from '../../styles/misc';
 
-const layoutClass = css`
-  display: flex;
+export const layoutClass = css`
+  ${flex};
   flex-direction: column;
-  flex-grow: 1;
+  ${flexGrow};
   background-color: #fafafa;
   color: #14171a;
   min-height: 100vh;
+
+  main {
+    padding-top: 60px;
+    order: 1;
+    ${flexGrow};
+  }
 `;
 
-export default layoutClass;
+export const globalStyles = css`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a,
+  a:visited {
+    color: #51a5ef;
+    text-decoration: none;
+  }
+
+  article,
+  div,
+  footer {
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    ${flex};
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+`;
