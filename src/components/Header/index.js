@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoImg from "./assets/logo.png";
 import "./styles.css";
 
 const Header = () => (
@@ -9,9 +8,9 @@ const Header = () => (
       <div className="header_logo-container">
         <Link to="/">
           <div className="header_logo">
-            <span className="header_brand-logo" ariaLabel="Ingame.id" />
+            <span className="header_brand-logo" aria-label="Ingame.id" />
             <div className="header_sparator" />
-            <span className="header_brand-label" ariaLabel="Ingame.id">
+            <span className="header_brand-label" aria-label="Ingame.id">
               Ingame.id
             </span>
           </div>
@@ -20,9 +19,5 @@ const Header = () => (
     </div>
   </header>
 );
-
-// Header.propTypes = {
-
-// }
 
 export default Header;
