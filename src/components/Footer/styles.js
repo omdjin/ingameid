@@ -23,7 +23,7 @@ export const contentStyle = css`
   }
   span {
     text-transform: unset;
-    color: #999;
+    color: #4f4f4f;
   }
 `;
 
