@@ -60,6 +60,9 @@ export const gridItem = css`
   @media (min-width: 736px) {
     margin-right: 28px;
   }
+  @media (max-width: 735px) {
+    margin-right: 3px;
+  }
 
   .item-overlay {
     display: none;

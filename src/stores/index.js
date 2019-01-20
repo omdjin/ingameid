@@ -1,19 +1,20 @@
+import steamWallet from './img/steam-wallet.jpg';
+import mlStarlight from './img/ml-starlight.jpg';
+
 export const products = [
   {
     slug: 'steam-wallet-idr',
     title: 'Steam Wallet IDR',
     body:
-      'Beli Voucher Steam Wallet murah dan mudah! Pilih nominal yang kamu inginkan dan bayar melalui BCA, BRI, CIMB Clicks, Mandiri, Permata, Danamon, BNI, Telkomsel, XL, Indosat, Tri, Indomaret, Alfamart, Kartu Kredit.',
-    imageUrl:
-      'https://instagram.fcgk5-1.fna.fbcdn.net/vp/2c63580aaebb3e1b3f8e5524f70e2d3e/5CC4838C/t51.2885-15/sh0.08/e35/s640x640/47585347_1956666914626918_703027355189967946_n.jpg?_nc_ht=instagram.fcgk5-1.fna.fbcdn.net',
+      '<p>Ready stock Steam Wallet ID dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><p>ID 6.000 =Rp8,000<br />ID 8.000 =Rp10,000<br />ID 12.000 =Rp15,000<br />ID 45.000 =Rp55,000<br />ID 60.000 =Rp72,000<br />ID 90.000 =Rp107,000<br />ID 120.000 =Rp140,000<br />ID 250.000 =Rp275,000<br />ID 400.000 =Rp440,000<br />ID 600.000 =Rp640,000</p>',
+    imageUrl: steamWallet,
   },
   {
     slug: 'mobile-legend-starlight',
     title: 'Mobile Legends Starlight',
     body:
-      'Beli Starlight Member Mobile Legends murah dan mudah! Pilih nominal yang kamu inginkan dan bayar melalui Telkomsel, XL, Indosat, BCA, BRI, CIMB Clicks, Mandiri, Permata, Danamon, BNI, Indomaret, Alfamart, Kartu Kredit.',
-    imageUrl:
-      'https://instagram.fcgk5-1.fna.fbcdn.net/vp/2b93f3339b9d9abde39df5580eb1ecfc/5CD87776/t51.2885-15/sh0.08/e35/s640x640/46089638_2245812305701191_4023021652784137322_n.jpg?_nc_ht=instagram.fcgk5-1.fna.fbcdn.net',
+      '<p>Beli Starlight Member Mobile Legends murah dan mudah dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p>',
+    imageUrl: mlStarlight,
   },
 ];
 
