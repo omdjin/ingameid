@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { flex, whiteBg } from '../../styles/misc';
+import { flex, justifyCenter, whiteBg } from '../../styles/misc';
 import logoImg from './assets/logo.png';
 
 export const headerClass = css`
@@ -10,7 +10,7 @@ export const headerClass = css`
   border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
   ${flex};
   align-items: center;
-  justify-content: center;
+  ${justifyCenter};
   width: 100%;
   margin: 0;
   padding: 0;
@@ -19,7 +19,7 @@ export const headerClass = css`
 export const headerWrapper = css`
   height: 52px;
   padding: 0 20px;
-  justify-content: center;
+  ${justifyCenter};
   flex-direction: row;
   max-width: 1010px;
   width: 100%;
