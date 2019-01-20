@@ -50,6 +50,8 @@ export const headerWrapper = css`
 
       .header_brand-label {
         margin-top: 4px;
+        font-weight: 700;
+        color: #14171a;
       }
     }
   }
