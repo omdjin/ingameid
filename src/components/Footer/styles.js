@@ -11,11 +11,12 @@ export const contentStyle = css`
   font-weight: 600;
   margin: 0 auto;
   width: 100%;
+  padding: 38px 0;
+  border-top: 1px solid #efefef;
   @media (min-width: 876px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 38px 0;
   }
   nav {
     text-transform: uppercase;

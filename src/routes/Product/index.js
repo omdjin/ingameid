@@ -34,6 +34,27 @@ const Product = ({ match }) => {
           name="description"
           content={`Beli ${product.title} murah dan mudah dengan berbagai nominal hanya di Ingame.id!`}
         />
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "${product.title}",
+          "image": [
+            "${product.imageUrl}"
+          ],
+          "description": "${product.shortDesc}",
+          "sku": "${product.sku}",
+          "brand": {
+            "@type": "Thing",
+            "name": "${product.brand}"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "89"
+          },
+        }
+        `}</script>
       </Helmet>
       <div css={ltEKP}>
         <article css={articleStyle}>
