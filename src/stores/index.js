@@ -1,5 +1,6 @@
-import steamWallet from './img/steam-wallet.jpg';
+import steamWallet from './img/steam-wallet-idr.png';
 import mlStarlight from './img/ml-starlight.jpg';
+import mlDiamond from './img/mobile-legend-diamond.png';
 
 export const products = [
   {
@@ -15,6 +16,13 @@ export const products = [
     body:
       '<p>Beli Starlight Member Mobile Legends murah dan mudah dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p>',
     imageUrl: mlStarlight,
+  },
+  {
+    slug: 'mobile-legend-diamond',
+    title: 'Mobile Legends Diamond',
+    body:
+      '<p>Beli Diamond Mobile Legends murah dan mudah dengan berbagai nominal hanya di Ingame.id!</p><p>Pilih nominal yang kamu inginkan dan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><p>36 Diamond = Rp10.000<br />74 Diamond = Rp20.000<br />220 Diamond = Rp60.000<br />275 Diamond = Rp75.000<br />366 Diamond = Rp100.000<br />966 diamond = Rp250.000<br />2010 Diamond = Rp495.000<br />4804 Diamond = Rp1.200.000</p>',
+    imageUrl: mlDiamond,
   },
 ];
 
