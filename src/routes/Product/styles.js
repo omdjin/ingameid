@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { flexGrow } from '../../styles/misc';
+import { flexGrow, justifyCenter, whiteBg } from '../../styles/misc';
 
 export const mainContent = css`
   ${flexGrow};
@@ -8,7 +8,7 @@ export const mainContent = css`
   width: 100%;
   @media (min-width: 736px) {
     box-sizing: content-box;
-    justify-content: center;
+    ${justifyCenter};
     padding: 40px 20px;
     width: calc(100% - 40px);
   }
@@ -24,7 +24,7 @@ export const ltEKP = css`
 
 export const articleStyle = css`
   @media (min-width: 736px) {
-    background-color: #fff;
+    ${whiteBg};
     border: 1px solid #e6e6e6;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
@@ -49,7 +49,7 @@ export const headerStyle = css`
 `;
 
 export const imageHolder = css`
-  justify-content: center;
+  ${justifyCenter};
   margin-right: 335px;
   min-height: 450px;
   background-color: #fafafa;
@@ -90,14 +90,14 @@ export const contentWrap = css`
   word-wrap: break-word;
   overflow-x: hidden;
   ::-webkit-scrollbar {
-      width: 6px;
-      background-color: #F5F5F5;
+    width: 6px;
+    background-color: #f5f5f5;
   }
   ::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
   ::-webkit-scrollbar-thumb {
-      background-color: #999;
-      border-radius: 4px;
+    background-color: #999;
+    border-radius: 4px;
   }
 `;

@@ -6,7 +6,17 @@ import { jsx } from '@emotion/core';
 import Contact from '../../components/Contact';
 import { getProduct } from '../../helpers/product';
 import NotFound from '../../components/NotFound';
-import { mainContent, ltEKP, articleStyle, headerStyle, imageHolder, imageContainer, imageOverflow, imageStyle, contentWrap } from './styles';
+import {
+  mainContent,
+  ltEKP,
+  articleStyle,
+  headerStyle,
+  imageHolder,
+  imageContainer,
+  imageOverflow,
+  imageStyle,
+  contentWrap,
+} from './styles';
 
 const Product = ({ match }) => {
   const slug = match.params.slug;
@@ -20,6 +30,10 @@ const Product = ({ match }) => {
     <div css={mainContent}>
       <Helmet>
         <title>{product.title} - Ingame.id</title>
+        <meta
+          name="description"
+          content={`Beli ${product.title} murah dan mudah dengan berbagai nominal hanya di Ingame.id!`}
+        />
       </Helmet>
       <div css={ltEKP}>
         <article css={articleStyle}>
@@ -40,7 +54,6 @@ const Product = ({ match }) => {
             <Contact />
           </div>
         </article>
-
       </div>
     </div>
   );

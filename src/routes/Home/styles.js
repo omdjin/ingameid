@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { flex, flexGrow } from '../../styles/misc';
+import { flex, flexGrow, justifyCenter } from '../../styles/misc';
 
 export const mainContent = css`
   ${flexGrow};
@@ -19,7 +19,7 @@ export const tabHeader = css`
   flex-direction: row;
   font-size: 12px;
   font-weight: 600;
-  justify-content: center;
+  ${justifyCenter};
   letter-spacing: 1px;
   text-align: center;
 
@@ -29,7 +29,7 @@ export const tabHeader = css`
     ${flex};
     flex-direction: row;
     height: 52px;
-    justify-content: center;
+    ${justifyCenter};
     text-transform: uppercase;
   }
 `;
@@ -67,7 +67,7 @@ export const gridItem = css`
   .item-overlay {
     display: none;
     flex-direction: column;
-    justify-content: center;
+    ${justifyCenter};
     bottom: 0;
     left: 0;
     position: absolute;
@@ -75,17 +75,18 @@ export const gridItem = css`
     top: 0;
     background-color: rgba(0, 0, 0, 0.3);
     h2 {
+      ${flex};
       align-items: center;
+      ${justifyCenter};
+      text-align: center;
       color: #fff;
-      justify-content: center;
       width: 100%;
-      display: flex;
       font-weight: 600;
       height: 100%;
     }
   }
-  :hover .item-overlay{
-    display: flex;
+  :hover .item-overlay {
+    ${flex};
   }
 `;
 

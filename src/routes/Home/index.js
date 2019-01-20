@@ -5,7 +5,18 @@ import { chunk } from 'lodash';
 import { jsx } from '@emotion/core';
 import { getProducts } from '../../helpers/product';
 import { flexGrow } from '../../styles/misc';
-import { mainContent, tabHeader, tabLabel, gridContainer, gridRow, gridItem, itemWrapper, itemContainer, itemImage, itemClear } from './styles';
+import {
+  mainContent,
+  tabHeader,
+  tabLabel,
+  gridContainer,
+  gridRow,
+  gridItem,
+  itemWrapper,
+  itemContainer,
+  itemImage,
+  itemClear,
+} from './styles';
 
 const Home = () => {
   const allProducst = getProducts();
@@ -13,7 +24,13 @@ const Home = () => {
 
   return (
     <div css={mainContent}>
-      <Helmet><title>Home - Ingame.id</title></Helmet>
+      <Helmet>
+        <title>Home - Ingame.id</title>
+        <meta
+          name="description"
+          content="Jual voucher game online termurah dengan proses yang cepat dan mudah. Main game jadi tambah seru dengan skin keren dan fitur premium. Yuk beli voucher game di Ingame.id sekarang."
+        />
+      </Helmet>
       <div css={tabHeader}>
         <Link to="/">
           <span css={tabLabel}>PRODUCTS</span>
