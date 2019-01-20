@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet-async';
 import { getProduct } from '../../helpers/product';
 import NotFound from '../../components/NotFound';
 
@@ -12,6 +13,9 @@ const Product = ({ match }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{product.title} - Ingame.id</title>
+      </Helmet>
       <div style={{ width: '40%' }}>
         <h1>{product.title}</h1>
       </div>

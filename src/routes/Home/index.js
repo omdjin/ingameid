@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet-async';
 import { chunk } from 'lodash';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
@@ -12,6 +13,7 @@ const Home = () => {
 
   return (
     <div css={mainContent}>
+      <Helmet><title>Home - Ingame.id</title></Helmet>
       <div css={tabHeader}>
         <Link to="/">
           <span css={tabLabel}>PRODUCTS</span>
