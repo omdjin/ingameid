@@ -33,6 +33,12 @@ const Product = ({ match }) => {
           name="description"
           content={`Beli ${product.title} murah dan mudah dengan berbagai nominal hanya di Ingame.id!`}
         />
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.shortDesc} />
+        <meta property="og:image" content={product.imageUrl} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:image" content={product.imageUrl} />
+        <meta name="twitter:site" content="@ratriretno" />
         <script type="application/ld+json">{`
         {
           "@context": "https://schema.org/",
