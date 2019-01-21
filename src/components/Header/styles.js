@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import { flex, justifyCenter, whiteBg } from '../../styles/misc';
-import logoImg from './assets/logo.png';
+import logoImg from './assets/logo.webp';
 
 export const headerClass = css`
   order: 0;
