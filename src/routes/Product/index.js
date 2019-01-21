@@ -1,4 +1,3 @@
-import React from 'react';
 import Helmet from 'react-helmet-async';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
@@ -29,7 +28,7 @@ const Product = ({ match }) => {
   return (
     <div css={mainContent}>
       <Helmet>
-        <title>{product.title} - Ingame.id</title>
+        <title>Jual {product.title} - Ingame.id</title>
         <meta
           name="description"
           content={`Beli ${product.title} murah dan mudah dengan berbagai nominal hanya di Ingame.id!`}

@@ -112,4 +112,7 @@ export const contentWrap = css`
     }
   }
   padding: 0 16px;
+  ul {
+    padding-left: 22px;
+  }
 `;

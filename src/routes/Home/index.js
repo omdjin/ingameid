@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <div css={mainContent}>
       <Helmet>
-        <title>Home - Ingame.id</title>
+        <title>Beli voucher game online termurah, cepat dan mudah - Ingame.id</title>
         <meta
           name="description"
           content="Jual voucher game online termurah dengan proses yang cepat dan mudah. Main game jadi tambah seru dengan skin keren dan fitur premium. Yuk beli voucher game di Ingame.id sekarang."
@@ -40,7 +40,7 @@ const Home = () => {
         <article css={flexGrow}>
           <div>
             <div css={gridContainer}>
-              {chunkProducts.map((producst, index) => (
+              {chunkProducts.reverse().map((producst, index) => (
                 <div key={index} css={gridRow}>
                   {producst.map(detail => (
                     <div key={detail.slug} css={gridItem}>

@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
+  "start_url": "/?utm_source=a2hs",
+  "display": "fullscreen",
   "theme_color": "#fafafa",
   "background_color": "#ffffff"
 }
