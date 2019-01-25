@@ -13,12 +13,6 @@ const GridItem = ({ detail }) => {
       action: 'click product item',
       label: `${detail.title} - /${detail.slug}`,
     });
-
-    console.log({
-      category: 'homepage',
-      action: 'click product item',
-      label: `${detail.title} - /${detail.slug}`,
-    });
   };
 
   return (
