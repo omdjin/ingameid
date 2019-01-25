@@ -1,26 +1,24 @@
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet-async';
 import { chunk } from 'lodash';
+import ReactGA from 'react-ga';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import GridItem from './GridItem';
 import { getProducts } from '../../helpers/product';
 import { flexGrow } from '../../styles/misc';
-import {
-  mainContent,
-  tabHeader,
-  tabLabel,
-  gridContainer,
-  gridRow,
-  gridItem,
-  itemWrapper,
-  itemContainer,
-  itemImage,
-  itemClear,
-} from './styles';
+import { mainContent, tabHeader, tabLabel, gridContainer, gridRow } from './styles';
 
 const Home = () => {
   const allProducst = getProducts();
   const chunkProducts = chunk(allProducst, 3);
+  const handleClickProductsHeader = () => {
+    ReactGA.event({
+      category: 'homepage',
+      action: 'click products header',
+      label: 'PRODUCTS',
+    });
+  };
 
   return (
     <div css={mainContent}>
@@ -32,7 +30,7 @@ const Home = () => {
         />
       </Helmet>
       <div css={tabHeader}>
-        <Link to="/">
+        <Link to="/" onClick={handleClickProductsHeader}>
           <span css={tabLabel}>PRODUCTS</span>
         </Link>
       </div>
@@ -43,19 +41,7 @@ const Home = () => {
               {chunkProducts.reverse().map((producst, index) => (
                 <div key={index} css={gridRow}>
                   {producst.map(detail => (
-                    <div key={detail.slug} css={gridItem}>
-                      <Link to={`/${detail.slug}`}>
-                        <div css={itemWrapper}>
-                          <div css={itemContainer}>
-                            <img src={detail.imageUrl} alt={detail.title} css={itemImage} sizes="293px" />
-                          </div>
-                          <div css={itemClear} />
-                        </div>
-                        <div className="item-overlay">
-                          <h2>{detail.title}</h2>
-                        </div>
-                      </Link>
-                    </div>
+                    <GridItem key={detail.slug} detail={detail} source="homepage" />
                   ))}
                 </div>
               ))}
