@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import { flex, justifyCenter, whiteBg } from '../../styles/misc';
+import { blackPrimary, borderBlack } from '../../styles/colors';
 import logoImg from './assets/logo.webp';
 
 export const headerClass = css`
@@ -40,18 +41,19 @@ export const headerWrapper = css`
         background-size: cover;
         height: 24px;
         width: 24px;
+        margin-top: 2px;
       }
       .header_sparator {
-        background-color: #262626;
+        background-color: ${borderBlack};
         height: 28px;
         margin: 0 16px;
         width: 1px;
       }
 
       .header_brand-label {
-        margin-top: 4px;
+        margin-top: 3px;
         font-weight: 700;
-        color: #14171a;
+        color: ${blackPrimary};
       }
     }
   }

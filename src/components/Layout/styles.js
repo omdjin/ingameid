@@ -1,12 +1,13 @@
 import { css } from '@emotion/core';
 import { flex, flexGrow } from '../../styles/misc';
+import { blackPrimary } from '../../styles/colors';
 
 export const layoutClass = css`
   ${flex};
   flex-direction: column;
   ${flexGrow};
   background-color: #fafafa;
-  color: #14171a;
+  color: ${blackPrimary};
   min-height: 100vh;
 
   main {
