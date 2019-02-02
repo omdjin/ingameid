@@ -77,7 +77,7 @@ const Product = ({ match }) => {
           </div>
           <div css={contentWrap}>
             <div dangerouslySetInnerHTML={{ __html: product.body }} />
-            <Contact />
+            <Contact productName={product.title} />
           </div>
         </article>
       </div>

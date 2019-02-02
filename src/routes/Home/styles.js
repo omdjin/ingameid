@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import { flex, flexGrow, justifyCenter } from '../../styles/misc';
+import { blackPrimary, borderBlack } from '../../styles/colors';
 
 export const mainContent = css`
   ${flexGrow};
@@ -24,8 +25,8 @@ export const tabHeader = css`
   text-align: center;
 
   a {
-    border-top: 1px solid #262626;
-    color: #14171a;
+    border-top: 1px solid ${borderBlack};
+    color: ${blackPrimary};
     ${flex};
     flex-direction: row;
     height: 52px;

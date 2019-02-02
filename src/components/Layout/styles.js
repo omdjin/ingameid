@@ -1,12 +1,13 @@
 import { css } from '@emotion/core';
 import { flex, flexGrow } from '../../styles/misc';
+import { blackPrimary } from '../../styles/colors';
 
 export const layoutClass = css`
   ${flex};
   flex-direction: column;
   ${flexGrow};
   background-color: #fafafa;
-  color: #14171a;
+  color: ${blackPrimary};
   min-height: 100vh;
 
   main {
@@ -36,6 +37,14 @@ export const globalStyles = css`
     text-decoration: none;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
   article,
   div,
   footer {
