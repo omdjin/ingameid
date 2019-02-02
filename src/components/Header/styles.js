@@ -44,15 +44,18 @@ export const headerWrapper = css`
         margin-top: 2px;
       }
       .header_sparator {
-        background-color: ${borderBlack};
         height: 28px;
-        margin: 0 16px;
+        margin: 0 4px;
         width: 1px;
+        @media (min-width: 736px) {
+          background-color: ${borderBlack};
+          margin: 0 16px;
+        }
       }
 
       .header_brand-label {
         margin-top: 3px;
-        font-weight: 700;
+        font-weight: 600;
         color: ${blackPrimary};
       }
     }

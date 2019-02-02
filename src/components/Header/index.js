@@ -22,7 +22,7 @@ const Header = () => {
               <span className="header_brand-logo" aria-label="Ingame.id" />
               <div className="header_sparator" />
               <span className="header_brand-label" aria-label="Ingame.id">
-                Ingame.id
+                INGAME : Voucher &amp; Topup Game
               </span>
             </div>
           </Link>

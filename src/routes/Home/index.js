@@ -19,6 +19,7 @@ const Home = () => {
       label: 'PRODUCTS',
     });
   };
+  const hideTab = true;
 
   return (
     <div css={mainContent}>
@@ -29,11 +30,13 @@ const Home = () => {
           content="Jual voucher game online termurah dengan proses yang cepat dan mudah. Main game jadi tambah seru dengan skin keren dan fitur premium. Yuk beli voucher game di Ingame.id sekarang."
         />
       </Helmet>
-      <div css={tabHeader}>
-        <Link to="/" onClick={handleClickProductsHeader}>
-          <span css={tabLabel}>PRODUCTS</span>
-        </Link>
-      </div>
+      {!hideTab && (
+        <div css={tabHeader}>
+          <Link to="/" onClick={handleClickProductsHeader}>
+            <span css={tabLabel}>PRODUCTS</span>
+          </Link>
+        </div>
+      )}
       <div>
         <article css={flexGrow}>
           <div>
