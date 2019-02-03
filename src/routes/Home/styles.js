@@ -63,6 +63,7 @@ export const gridItem = css`
   }
   @media (max-width: 735px) {
     margin-right: 3px;
+    margin-bottom: 3px;
   }
 
   .item-overlay {

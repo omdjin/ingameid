@@ -1,6 +1,6 @@
 import React from 'react';
 import { object } from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
@@ -12,6 +12,9 @@ const Routes = ({ history, location, match }) => (
   <Layout>
     <main>
       <Switch>
+        <Redirect from="/mobile-legend-starlight" to="/diamond-starlight-member-mobile-legend" />
+        <Redirect from="/mobile-legend-diamond" to="/diamond-starlight-member-mobile-legend" />
+        <Redirect from="/steam-wallet-idr" to="/steam-wallet-code" />
         <Route path="/:slug" component={ProductContainer} />
         <Route exact path="/" component={HomeComponent} />
       </Switch>
