@@ -44,13 +44,13 @@ export const products = [
     brand: 'Moonton',
   },
   {
-    slug: 'steam-wallet-idr',
-    title: 'Steam Wallet IDR',
+    slug: 'steam-wallet-code',
+    title: 'Steam Wallet Code',
     body:
-      '<p>Ready stock Steam Wallet ID dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><p>ID 6.000 =Rp8,000<br />ID 8.000 =Rp10,000<br />ID 12.000 =Rp15,000<br />ID 45.000 =Rp55,000<br />ID 60.000 =Rp72,000<br />ID 90.000 =Rp107,000<br />ID 120.000 =Rp140,000<br />ID 250.000 =Rp275,000<br />ID 400.000 =Rp440,000<br />ID 600.000 =Rp640,000</p>',
+      '<p>Ready stock Steam Wallet Code dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><p>ID 6.000 =Rp8,000<br />ID 8.000 =Rp10,000<br />ID 12.000 =Rp15,000<br />ID 45.000 =Rp55,000<br />ID 60.000 =Rp72,000<br />ID 90.000 =Rp107,000<br />ID 120.000 =Rp140,000<br />ID 250.000 =Rp275,000<br />ID 400.000 =Rp440,000<br />ID 600.000 =Rp640,000</p>',
     shortDesc:
-      'Ready stock Steam Wallet ID dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
-    imageUrl: '/static/img/steam-wallet-idr.webp',
+      'Ready stock Steam Wallet Code dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
+    imageUrl: '/static/img/steam-wallet.webp',
     sku: 'SWID',
     brand: 'Steam',
   },

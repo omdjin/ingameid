@@ -14,6 +14,7 @@ const Routes = ({ history, location, match }) => (
       <Switch>
         <Redirect from="/mobile-legend-starlight" to="/diamond-starlight-member-mobile-legend" />
         <Redirect from="/mobile-legend-diamond" to="/diamond-starlight-member-mobile-legend" />
+        <Redirect from="/steam-wallet-idr" to="/steam-wallet-code" />
         <Route path="/:slug" component={ProductContainer} />
         <Route exact path="/" component={HomeComponent} />
       </Switch>
