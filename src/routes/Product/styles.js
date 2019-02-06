@@ -112,6 +112,9 @@ export const contentWrap = css`
     }
   }
   padding: 0 16px;
+  h3 {
+    margin-bottom: 0;
+  }
   ul {
     padding-left: 22px;
   }
