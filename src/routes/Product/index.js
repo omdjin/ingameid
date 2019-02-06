@@ -45,7 +45,7 @@ const Product = ({ match }) => {
           "@type": "Product",
           "name": "${product.title}",
           "image": [
-            "${product.imageUrl}"
+            "${process.env.REACT_APP_URL}${product.imageUrl}"
           ],
           "description": "${product.shortDesc}",
           "sku": "${product.sku}",
