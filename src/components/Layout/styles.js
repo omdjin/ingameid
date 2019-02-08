@@ -1,12 +1,12 @@
 import { css } from '@emotion/core';
 import { flex, flexGrow } from '../../styles/misc';
-import { blackPrimary } from '../../styles/colors';
+import { blackPrimary, greenPrimary, whiteSecondary } from '../../styles/colors';
 
 export const layoutClass = css`
   ${flex};
   flex-direction: column;
   ${flexGrow};
-  background-color: #fafafa;
+  background-color: ${whiteSecondary};
   color: ${blackPrimary};
   min-height: 100vh;
 
@@ -33,7 +33,7 @@ export const globalStyles = css`
 
   a,
   a:visited {
-    color: #51a5ef;
+    color: ${greenPrimary};
     text-decoration: none;
   }
 

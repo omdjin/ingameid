@@ -1,11 +1,12 @@
 import { css } from '@emotion/core';
-import { flexGrow, justifyCenter, whiteBg } from '../../styles/misc';
+import { block, flexGrow, itemsCenter, justifyCenter, pAbsolute, whiteBg, width100 } from '../../styles/misc';
+import { grey, whiteSecondary } from '../../styles/colors';
 
 export const mainContent = css`
   ${flexGrow};
+  ${width100};
   margin: 0 auto 16px;
   max-width: 935px;
-  width: 100%;
   @media (min-width: 736px) {
     box-sizing: content-box;
     ${justifyCenter};
@@ -16,9 +17,9 @@ export const mainContent = css`
 
 export const ltEKP = css`
   @media (min-width: 736px) {
-    align-items: center;
+    ${itemsCenter};
+    ${width100};
     margin: 0 auto;
-    width: 100%;
   }
 `;
 
@@ -29,25 +30,25 @@ export const articleStyle = css`
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
   }
-  width: 100%;
+  ${width100};
   padding: 0;
 `;
 
 export const headerStyle = css`
   @media (min-width: 736px) {
-    border-bottom: 1px solid #efefef;
+    ${pAbsolute};
+    border-bottom: 1px solid ${grey};
     padding: 20px 0;
     max-height: 78px;
     margin-right: 0;
-    position: absolute;
     right: 24px;
     top: 0;
     width: 287px;
   }
+  ${itemsCenter};
   border-bottom-width: 0.5px;
   padding: 16px;
   padding-right: 40px;
-  align-items: center;
 
   h1 {
     font-size: 16px;
@@ -60,39 +61,39 @@ export const imageHolder = css`
     ${justifyCenter};
     margin-right: 335px;
     min-height: 450px;
-    background-color: #fafafa;
+    background-color: ${whiteSecondary};
   }
 `;
 
 export const imageContainer = css`
-  background-color: #efefef;
-  display: block;
-  width: 100%;
+  ${block};
+  ${width100};
+  background-color: ${grey};
 `;
 
 export const imageOverflow = css`
-  display: block;
+  ${block};
   overflow: hidden;
   padding-bottom: 100%;
 `;
 
 export const imageStyle = css`
+  ${pAbsolute};
+  ${width100};
   object-fit: cover;
   height: 100%;
   user-select: none;
-  width: 100%;
   left: 0;
-  position: absolute;
   top: 0;
 `;
 
 export const contentWrap = css`
   @media (min-width: 736px) {
+    ${pAbsolute};
     bottom: 0;
     box-sizing: border-box;
     padding-left: 24px;
     padding-right: 24px;
-    position: absolute;
     right: 0;
     top: 78px;
     width: 335px;
