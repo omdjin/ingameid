@@ -1,4 +1,6 @@
 import { css } from '@emotion/core';
+import { grey } from '../../styles/colors';
+import { width100 } from '../../styles/misc';
 
 export const footerStyle = css`
   order: 2;
@@ -6,13 +8,13 @@ export const footerStyle = css`
 `;
 
 export const contentStyle = css`
+  ${width100};
   max-width: 935px;
   font-size: 12px;
   font-weight: 600;
   margin: 0 auto;
-  width: 100%;
   padding: 38px 0;
-  border-top: 1px solid #efefef;
+  border-top: 1px solid ${grey};
   @media (min-width: 876px) {
     flex-direction: row;
     flex-wrap: wrap;

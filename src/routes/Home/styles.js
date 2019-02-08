@@ -1,12 +1,12 @@
 import { css } from '@emotion/core';
-import { flex, flexGrow, justifyCenter } from '../../styles/misc';
-import { blackPrimary, borderBlack } from '../../styles/colors';
+import { block, flex, flexGrow, itemsCenter, justifyCenter, pAbsolute, width100 } from '../../styles/misc';
+import { blackPrimary, borderBlack, grey, white } from '../../styles/colors';
 
 export const mainContent = css`
   ${flexGrow};
+  ${width100};
   margin: 0 auto 30px;
   max-width: 935px;
-  width: 100%;
   @media (min-width: 736px) {
     box-sizing: content-box;
     padding: 60px 20px 0;
@@ -15,29 +15,29 @@ export const mainContent = css`
 `;
 
 export const tabHeader = css`
-  border-top: 1px solid #efefef;
-  align-items: center;
+  ${justifyCenter};
+  ${itemsCenter};
+  border-top: 1px solid ${grey};
   flex-direction: row;
   font-size: 12px;
   font-weight: 600;
-  ${justifyCenter};
   letter-spacing: 1px;
   text-align: center;
 
   a {
+    ${flex};
+    ${justifyCenter};
     border-top: 1px solid ${borderBlack};
     color: ${blackPrimary};
-    ${flex};
     flex-direction: row;
     height: 52px;
-    ${justifyCenter};
     text-transform: uppercase;
   }
 `;
 
 export const tabLabel = css`
   ${flex};
-  align-items: center;
+  ${itemsCenter};
 `;
 
 export const gridContainer = css`
@@ -54,10 +54,10 @@ export const gridRow = css`
 `;
 
 export const gridItem = css`
+  ${block};
+  ${width100};
   flex: 1 0 0%;
-  display: block;
   position: relative;
-  width: 100%;
   @media (min-width: 736px) {
     margin-right: 28px;
   }
@@ -67,22 +67,22 @@ export const gridItem = css`
   }
 
   .item-overlay {
+    ${justifyCenter};
+    ${pAbsolute};
     display: none;
     flex-direction: column;
-    ${justifyCenter};
     bottom: 0;
     left: 0;
-    position: absolute;
     right: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.3);
     h2 {
       ${flex};
-      align-items: center;
       ${justifyCenter};
+      ${itemsCenter};
+      ${width100};
       text-align: center;
-      color: #fff;
-      width: 100%;
+      color: ${white};
       font-weight: 600;
       height: 100%;
     }
@@ -93,19 +93,19 @@ export const gridItem = css`
 `;
 
 export const itemWrapper = css`
-  background-color: #efefef;
-  display: block;
-  width: 100%;
+  ${block};
+  ${width100};
+  background-color: ${grey};
 `;
 
 const pullLeft = css`
+  ${pAbsolute};
   left: 0;
-  position: absolute;
   top: 0;
 `;
 
 export const itemContainer = css`
-  display: block;
+  ${block};
   overflow: hidden;
   padding-bottom: 100%;
 `;
@@ -117,9 +117,9 @@ export const itemClear = css`
 `;
 
 export const itemImage = css`
+  ${width100};
+  ${pullLeft};
   object-fit: cover;
   height: 100%;
   user-select: none;
-  width: 100%;
-  ${pullLeft};
 `;
