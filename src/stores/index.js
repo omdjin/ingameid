@@ -3,7 +3,7 @@ export const products = [
     slug: 'pubgm-unknown-cash',
     title: 'PUBG-Mobile Unknown Cash (UC)',
     body:
-      '<p>Beli PUBG-Mobile Unknown Cash (UC) murah dan mudah dengan berbagai nominal!</p><p>Pilih nominal UC yang kamu inginkan dan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><ul><li>PUBG UC-50 = Rp11.000</li><li>PUBG UC-70 Rp14.600</li><li>PUBG UC-150 = Rp31.100</li><li>PUBG UC-210 = Rp43.900</li><li>PUBG UC-250 = Rp52.000</li><li>PUBG UC-500 = Rp103.000</li><li>PUBG UC-700 = Rp146.300</li><li>PUBG UC-1250 = Rp258.500</li><li>PUBG UC-1750 = Rp364.600</li><li>PUBG UC-2500 = Rp519.700</li><li>PUBG UC-3500 = Rp729.300</li></ul>',
+      '<p>Beli PUBG-Mobile Unknown Cash (UC) murah dan mudah dengan berbagai nominal!</p><p>Pilih nominal UC yang kamu inginkan dan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><ul><li>PUBG UC-50 = Rp11.000</li><li>PUBG UC-70 = Rp14.600</li><li>PUBG UC-150 = Rp31.100</li><li>PUBG UC-210 = Rp43.900</li><li>PUBG UC-250 = Rp52.000</li><li>PUBG UC-500 = Rp103.000</li><li>PUBG UC-700 = Rp146.300</li><li>PUBG UC-1250 = Rp258.500</li><li>PUBG UC-1750 = Rp364.600</li><li>PUBG UC-2500 = Rp519.700</li><li>PUBG UC-3500 = Rp729.300</li></ul>',
     shortDesc:
       'Beli PUBG-Mobile Unknown Cash (UC) murah dan mudah dengan berbagai nominal hanya di Ingame.id! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
     imageUrl: '/static/img/pubg-mobile.webp',
