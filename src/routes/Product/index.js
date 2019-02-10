@@ -31,7 +31,7 @@ const Product = ({ match }) => {
         <title>Jual {product.title} - Ingame.id</title>
         <meta
           name="description"
-          content={`Beli ${product.title} murah dan mudah dengan berbagai nominal hanya di Ingame.id!`}
+          content={product.shortDesc}
         />
         <meta property="og:title" content={product.title} />
         <meta property="og:description" content={product.shortDesc} />

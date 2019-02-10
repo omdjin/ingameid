@@ -27,7 +27,7 @@ export const products = [
     body:
       '<p>Ready stock Ragnarok M: Eternal Love Zeny dengan berbagai nominal. Top Up menggunakan user ID tanpa perlu login..!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><p>Ragnarok M: Eternal Love adalah sebuah game mobile petualangan MMORPG yang didasari dari populernya Ragnarok Online di tahun 2003, dimana game ini merupakan bagian warisan dari jutaan pecinta RO di seluruh dunia. Ragnarok M: Eternal Love memamerkan latar belakang kemegahan Rune Midgard dengan tetap mempertahankan seni artistiknya selama 15 tahun. Fitur gameplay klasik yang dilengkapi dengan beberapa sentuhan modern!</p><ul><li>40rb Zeny=Rp 10.000</li><li>54rb Zeny=Rp 15,000</li><li>80rb Zeny=Rp 20.000</li><li>120rb Zeny=Rp 30.000</li><li>200rb Zeny=Rp 50.000</li><li>300rb Zeny=Rp 75.000</li><li>400rb Zeny=Rp 100.000</li><li>600rb Zeny=Rp 148.000</li><li>800rb Zeny=Rp 195.000</li><li>1,2jt Zeny=Rp 297.000</li><li>2jt Zeny=Rp 490.000</li><li>2,98jt Zeny=Rp 730.000</li><li>4jt Zeny=Rp 980.000</li></ul>',
     shortDesc:
-      'Ready stock Ragnarok M: Eternal Love Zeny dengan berbagai nominal. Top Up menggunakan user ID tanpa perlu login..! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
+      'Beli Ragnarok M: Eternal Love Zeny dengan berbagai nominal. Top Up menggunakan user ID tanpa perlu login..! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
     imageUrl: '/static/img/ragnarok-m-zeny.webp',
     sku: 'RGZ',
     brand: 'Lytogame',
@@ -49,7 +49,7 @@ export const products = [
     body:
       '<p>Ready stock Steam Wallet Code dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><h3>Steam Wallet IDR</h3><ul><li>ID 8.000=Rp10,000</li><li>ID 6.000=Rp8,000</li><li>ID 12.000=Rp15,000</li><li>ID 45.000=Rp55,000</li><li>ID 60.000=Rp72,000</li><li>ID 90.000=Rp107,000</li><li>ID 120.000=Rp140,000</li><li>ID 250.000=Rp275,000</li><li>ID 400.000=Rp440,000</li><li>ID 600.000=Rp640,000</li></ul><h3>Steam Wallet US</h3><ul><li>Kosong</li></ul>',
     shortDesc:
-      'Ready stock Steam Wallet Code dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret. Steam wallet indonesia paling murah hanya di ingame.id',
+      'Beli Steam Wallet Code dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret. Steam wallet indonesia paling murah hanya di ingame.id',
     imageUrl: '/static/img/steam-wallet.webp',
     sku: 'SWID',
     brand: 'Steam',
