@@ -49,7 +49,7 @@ export const products = [
     body:
       '<p>Ready stock Steam Wallet Code dengan berbagai nominal!</p><p>Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.</p><h3>Steam Wallet IDR</h3><ul><li>ID 8.000=Rp10,000</li><li>ID 6.000=Rp8,000</li><li>ID 12.000=Rp15,000</li><li>ID 45.000=Rp55,000</li><li>ID 60.000=Rp72,000</li><li>ID 90.000=Rp107,000</li><li>ID 120.000=Rp140,000</li><li>ID 250.000=Rp275,000</li><li>ID 400.000=Rp440,000</li><li>ID 600.000=Rp640,000</li></ul><h3>Steam Wallet US</h3><ul><li>Kosong</li></ul>',
     shortDesc:
-      'Ready stock Steam Wallet Code dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret.',
+      'Ready stock Steam Wallet Code dengan berbagai nominal! Pilih nominal yang kamu inginkan dan bayar melalui BCA, Mandiri, BNI, Jenius(BTPN) dan Indomaret. Steam wallet indonesia paling murah hanya di ingame.id',
     imageUrl: '/static/img/steam-wallet.webp',
     sku: 'SWID',
     brand: 'Steam',
