@@ -1,6 +1,8 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import { string } from 'prop-types';
 import ReactGA from 'react-ga';
+import { contactWrapper } from './styles';
 
 const Contact = ({ productName }) => {
   const text = `Saya mau pesan ${productName}`;
@@ -28,27 +30,66 @@ const Contact = ({ productName }) => {
       label: productName,
     });
   };
+  const handleClickShopee = () => {
+    ReactGA.event({
+      category: 'contact',
+      action: 'click shopee link',
+      label: productName,
+    });
+  };
 
   return (
-    <span role="img" aria-label="contact">
+    <div css={contactWrapper}>
       Order sekarang juga..! . .<br />
-      📲 WA :{' '}
-      <a href={whatsAppLink} rel="nofollow" onClick={handleClickWA}>
-        081703807256
-      </a>
-      <br />
-      📲 Line :{' '}
-      <a href="http://line.me/ti/p/~@solfagaming" rel="nofollow" onClick={handleClickLine}>
-        @solfagaming
-      </a>{' '}
-      pakai @
-      <br />
-      📸 Instagram :{' '}
-      <a href="https://www.instagram.com/id.ingame/" rel="nofollow" onClick={handleClickIG}>
-        @id.ingame
-      </a>
-      <br />
-    </span>
+      <p>
+        <span role="img" aria-label="contact">
+          📲 WA :{' '}
+          <a href={whatsAppLink} rel="noopener noreferrer" onClick={handleClickWA} target="_blank">
+            081703807256
+          </a>
+        </span>
+      </p>
+      <p>
+        <span role="img" aria-label="contact">
+          📲 Line :{' '}
+          <a
+            href="http://line.me/ti/p/~@solfagaming"
+            rel="noopener noreferrer"
+            onClick={handleClickLine}
+            target="_blank"
+          >
+            @solfagaming
+          </a>{' '}
+          pakai @
+        </span>
+      </p>
+      <p>
+        <span role="img" aria-label="contact">
+          📸 Instagram :{' '}
+          <a
+            href="https://www.instagram.com/id.ingame/"
+            rel="noopener noreferrer"
+            onClick={handleClickIG}
+            target="_blank"
+          >
+            @id.ingame
+          </a>
+        </span>
+      </p>
+      <p>
+        <span role="img" aria-label="contact">
+          🛍️ Shopee :{' '}
+          <a
+            href="https://shopee.co.id/solfagaming?smtt=0.0.9"
+            rel="noopener noreferrer"
+            onClick={handleClickShopee}
+            target="_blank"
+          >
+            SolfaGaming
+          </a>
+        </span>
+      </p>
+    </div>
   );
 };
 
