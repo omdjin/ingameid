@@ -2,12 +2,13 @@
 import { jsx } from '@emotion/core';
 import { footerStyle, contentStyle } from './styles';
 
-const Footer = () => (
+const Footer = () =>
   <footer css={footerStyle}>
     <div css={contentStyle}>
-      <span>Copyright &copy; {new Date().getFullYear()} Ingame.id</span>
+      <span>
+        Copyright &copy; {new Date().getFullYear()} Ingame.id
+      </span>
     </div>
-  </footer>
-);
+  </footer>;
 
 export default Footer;

@@ -2,13 +2,14 @@
 import { jsx } from '@emotion/core';
 import { string } from 'prop-types';
 import ReactGA from 'react-ga';
+import { CONTACT_NUMBER, CONTACT_NUMBER_WA } from '../../constants';
 import { contactWrapper } from './styles';
 
 const Contact = ({ productName }) => {
   const text = `Saya mau pesan ${productName}`;
   const whatsAppLink = productName
-    ? `https://wa.me/6281703807256?text=${encodeURIComponent(text)}`
-    : 'https://wa.me/6281703807256';
+    ? `https://wa.me/${CONTACT_NUMBER_WA}?text=${encodeURIComponent(text)}`
+    : `https://wa.me/${CONTACT_NUMBER_WA}`;
   const handleClickWA = () => {
     ReactGA.event({
       category: 'contact',
@@ -44,8 +45,13 @@ const Contact = ({ productName }) => {
       <p>
         <span role="img" aria-label="contact">
           📲 WA :{' '}
-          <a href={whatsAppLink} rel="noopener noreferrer" onClick={handleClickWA} target="_blank">
-            081703807256
+          <a
+            href={whatsAppLink}
+            rel="noopener noreferrer"
+            onClick={handleClickWA}
+            target="_blank"
+          >
+            {CONTACT_NUMBER}
           </a>
         </span>
       </p>
