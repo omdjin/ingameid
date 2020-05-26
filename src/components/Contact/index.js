@@ -17,13 +17,6 @@ const Contact = ({ productName }) => {
       label: productName,
     });
   };
-  const handleClickLine = () => {
-    ReactGA.event({
-      category: 'contact',
-      action: 'click line contact',
-      label: productName,
-    });
-  };
   const handleClickIG = () => {
     ReactGA.event({
       category: 'contact',
@@ -53,20 +46,6 @@ const Contact = ({ productName }) => {
           >
             {CONTACT_NUMBER}
           </a>
-        </span>
-      </p>
-      <p>
-        <span role="img" aria-label="contact">
-          📲 Line :{' '}
-          <a
-            href="http://line.me/ti/p/~@solfagaming"
-            rel="noopener noreferrer"
-            onClick={handleClickLine}
-            target="_blank"
-          >
-            @solfagaming
-          </a>{' '}
-          pakai @
         </span>
       </p>
       <p>
