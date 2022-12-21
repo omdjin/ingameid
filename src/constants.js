@@ -1,2 +1,0 @@
-export const CONTACT_NUMBER = '087732979595';
-export const CONTACT_NUMBER_WA = '6287732979595';
