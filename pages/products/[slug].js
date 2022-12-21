@@ -11,7 +11,7 @@ import {
   imageOverflow,
   imageStyle,
   contentWrap
-} from "./styles.css";
+} from "styles/products.css";
 
 export default function Product({ brand, product }) {
   const title = product.title.rendered;

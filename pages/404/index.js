@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { mainContent } from "./styles.css";
+import { mainContent } from "styles/404.css";
 
 export default function Error404() {
   return (
