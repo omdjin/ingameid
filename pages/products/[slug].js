@@ -91,12 +91,12 @@ export default function Product({ brand, product }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
   const { slug } = params;
 
   const url = `${process.env.NEXT_PUBLIC_API_HOST}/posts?_embed=wp:featuredmedia,wp:term&slug=${slug}`;
-  const res = await fetch(url);
-  const posts = await res.json();
+  const responsePosts = await fetch(url);
+  const posts = await responsePosts.json();
   const product = posts[0];
 
   if (!product) {
@@ -115,6 +115,12 @@ export async function getServerSideProps({ params }) {
 
     return withBrand || {};
   }, {});
+
+  // cache post for 900 seconds (15 minutes)
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=900, stale-while-revalidate=60"
+  );
 
   return {
     props: {
