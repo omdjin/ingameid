@@ -29,6 +29,23 @@ export default function Product({ brand, product }) {
   const mediaDetails = featuredmedia.media_details;
   const mediaSizes = mediaDetails.sizes;
   const imageUrl = mediaSizes.full.source_url;
+  const ldJson = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: `${parsedMetaTitle}`,
+    image: [`${imageUrl}`],
+    description: `${parsedExcerpt}`,
+    sku: `P-${product.id}-${product.slug}`,
+    brand: {
+      "@type": "Thing",
+      name: `${brand}`
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      reviewCount: "89"
+    }
+  };
 
   return (
     <div className={mainContent}>
@@ -41,27 +58,10 @@ export default function Product({ brand, product }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:site" content="@ratriretno" />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org/",
-          "@type": "Product",
-          "name": "${title}",
-          "image": [
-            "${imageUrl}"
-          ],
-          "description": "${parsedExcerpt}",
-          "sku": "P-${product.id}-${product.slug}",
-          "brand": {
-            "@type": "Thing",
-            "name": "${brand}"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "reviewCount": "89"
-          }
-        }
-        `}</script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+        />
       </Head>
       <div className={ltEKP}>
         <article className={articleStyle}>
