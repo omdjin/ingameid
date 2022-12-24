@@ -1,6 +1,8 @@
 import Head from "next/head";
+import parse from "html-react-parser";
 
 import Contact from "components/contact";
+import removeHTMLTags from "utils/removeHTMLTags";
 import {
   mainContent,
   ltEKP,
@@ -16,7 +18,11 @@ import {
 export default function Product({ brand, product }) {
   const title = product.title.rendered;
   const metaTitle = `Jual ${title} - Ingame.id`;
-  const excerpt = product.excerpt.rendered;
+  const parsedMetaTitle = parse(metaTitle);
+  const parsedExcerpt = removeHTMLTags(product.excerpt.rendered).replace(
+    /\n/g,
+    ""
+  );
   const body = product.content.rendered;
 
   const featuredmedia = product._embedded["wp:featuredmedia"][0];
@@ -27,10 +33,10 @@ export default function Product({ brand, product }) {
   return (
     <div className={mainContent}>
       <Head>
-        <title>{metaTitle}</title>
-        <meta name="description" content={excerpt} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={excerpt} />
+        <title>{parsedMetaTitle}</title>
+        <meta name="description" content={parsedExcerpt} />
+        <meta property="og:title" content={parsedMetaTitle} />
+        <meta property="og:description" content={parsedExcerpt} />
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content={imageUrl} />
@@ -43,7 +49,7 @@ export default function Product({ brand, product }) {
           "image": [
             "${imageUrl}"
           ],
-          "description": "${excerpt}",
+          "description": "${parsedExcerpt}",
           "sku": "P-${product.id}-${product.slug}",
           "brand": {
             "@type": "Thing",
@@ -53,7 +59,7 @@ export default function Product({ brand, product }) {
             "@type": "AggregateRating",
             "ratingValue": "4.7",
             "reviewCount": "89"
-          },
+          }
         }
         `}</script>
       </Head>
@@ -66,7 +72,11 @@ export default function Product({ brand, product }) {
             <div role="button" tabIndex="0">
               <div className={imageContainer}>
                 <div className={imageOverflow}>
-                  <img src={imageUrl} alt={metaTitle} className={imageStyle} />
+                  <img
+                    src={imageUrl}
+                    alt={parsedMetaTitle}
+                    className={imageStyle}
+                  />
                 </div>
               </div>
             </div>
