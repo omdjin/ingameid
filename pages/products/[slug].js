@@ -29,6 +29,23 @@ export default function Product({ brand, product }) {
   const mediaDetails = featuredmedia.media_details;
   const mediaSizes = mediaDetails.sizes;
   const imageUrl = mediaSizes.full.source_url;
+  const ldJson = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: `${parsedMetaTitle}`,
+    image: [`${imageUrl}`],
+    description: `${parsedExcerpt}`,
+    sku: `P-${product.id}-${product.slug}`,
+    brand: {
+      "@type": "Thing",
+      name: `${brand}`
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      reviewCount: "89"
+    }
+  };
 
   return (
     <div className={mainContent}>
@@ -41,27 +58,10 @@ export default function Product({ brand, product }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:site" content="@ratriretno" />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org/",
-          "@type": "Product",
-          "name": "${title}",
-          "image": [
-            "${imageUrl}"
-          ],
-          "description": "${parsedExcerpt}",
-          "sku": "P-${product.id}-${product.slug}",
-          "brand": {
-            "@type": "Thing",
-            "name": "${brand}"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "reviewCount": "89"
-          }
-        }
-        `}</script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+        />
       </Head>
       <div className={ltEKP}>
         <article className={articleStyle}>
@@ -91,12 +91,12 @@ export default function Product({ brand, product }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
   const { slug } = params;
 
   const url = `${process.env.NEXT_PUBLIC_API_HOST}/posts?_embed=wp:featuredmedia,wp:term&slug=${slug}`;
-  const res = await fetch(url);
-  const posts = await res.json();
+  const responsePosts = await fetch(url);
+  const posts = await responsePosts.json();
   const product = posts[0];
 
   if (!product) {
@@ -115,6 +115,12 @@ export async function getServerSideProps({ params }) {
 
     return withBrand || {};
   }, {});
+
+  // cache post for 900 seconds (15 minutes)
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=900, stale-while-revalidate=60"
+  );
 
   return {
     props: {

@@ -29,11 +29,17 @@ export default function Home({ chunkProducts }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ res }) {
   const url = `${process.env.NEXT_PUBLIC_API_HOST}/posts?_embed=wp:featuredmedia&categories=1`;
-  const res = await fetch(url);
-  const posts = await res.json();
+  const responsePosts = await fetch(url);
+  const posts = await responsePosts.json();
   const chunkProducts = chunk(posts, 3);
+
+  // cache homepage for 3600 seconds (1 hour)
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=3600, stale-while-revalidate=60"
+  );
 
   return {
     props: {
