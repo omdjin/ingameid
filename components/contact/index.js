@@ -1,13 +1,9 @@
-import useSWR from "swr";
+import useFetch from "hooks/useFetch";
 
 import { contactWrapper } from "./styles.css";
 
 export default function Contact({ productName }) {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_HOST}/custom-options`,
-    fetcher
-  );
+  const { data, error, isLoading } = useFetch(`/custom-options`);
 
   if (isLoading || error) {
     return null;
@@ -25,6 +21,18 @@ export default function Contact({ productName }) {
           📲 WA :{" "}
           <a href={whatsAppLink} rel="noopener noreferrer" target="_blank">
             {data.contact}
+          </a>
+        </span>
+      </p>
+      <p>
+        <span role="img" aria-label="contact">
+          📹 Tiktok :{" "}
+          <a
+            href="https://www.tiktok.com/@tkpd.nightwish"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            @tkpd.nightwish
           </a>
         </span>
       </p>

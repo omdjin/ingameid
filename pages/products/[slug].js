@@ -2,6 +2,7 @@ import Head from "next/head";
 import parse from "html-react-parser";
 
 import Contact from "components/contact";
+import DynamicLatestBlog from "components/latest-blog/dynamic";
 import removeHTMLTags from "utils/removeHTMLTags";
 import {
   mainContent,
@@ -48,46 +49,49 @@ export default function Product({ brand, product }) {
   };
 
   return (
-    <div className={mainContent}>
-      <Head>
-        <title>{parsedMetaTitle}</title>
-        <meta name="description" content={parsedExcerpt} />
-        <meta property="og:title" content={parsedMetaTitle} />
-        <meta property="og:description" content={parsedExcerpt} />
-        <meta property="og:image" content={imageUrl} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:site" content="@ratriretno" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
-        />
-      </Head>
-      <div className={ltEKP}>
-        <article className={articleStyle}>
-          <header className={headerStyle}>
-            <h1 dangerouslySetInnerHTML={{ __html: title }} />
-          </header>
-          <div className={imageHolder}>
-            <div role="button" tabIndex="0">
-              <div className={imageContainer}>
-                <div className={imageOverflow}>
-                  <img
-                    src={imageUrl}
-                    alt={parsedMetaTitle}
-                    className={imageStyle}
-                  />
+    <>
+      <div className={mainContent}>
+        <Head>
+          <title>{parsedMetaTitle}</title>
+          <meta name="description" content={parsedExcerpt} />
+          <meta property="og:title" content={parsedMetaTitle} />
+          <meta property="og:description" content={parsedExcerpt} />
+          <meta property="og:image" content={imageUrl} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:image" content={imageUrl} />
+          <meta name="twitter:site" content="@ratriretno" />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+          />
+        </Head>
+        <div className={ltEKP}>
+          <article className={articleStyle}>
+            <header className={headerStyle}>
+              <h1 dangerouslySetInnerHTML={{ __html: title }} />
+            </header>
+            <div className={imageHolder}>
+              <div role="button" tabIndex="0">
+                <div className={imageContainer}>
+                  <div className={imageOverflow}>
+                    <img
+                      src={imageUrl}
+                      alt={parsedMetaTitle}
+                      className={imageStyle}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={contentWrap}>
-            <div dangerouslySetInnerHTML={{ __html: body }} />
-            <Contact productName={title} />
-          </div>
-        </article>
+            <div className={contentWrap}>
+              <div dangerouslySetInnerHTML={{ __html: body }} />
+              <Contact productName={title} />
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
+      <DynamicLatestBlog />
+    </>
   );
 }
 

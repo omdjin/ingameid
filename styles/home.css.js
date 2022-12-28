@@ -7,12 +7,12 @@ export const mainContent = style([
   flexGrow,
   width100,
   {
-    margin: "0 auto 30px",
+    margin: "0 auto 8px",
     maxWidth: "935px",
     "@media": {
       "(min-width: 736px)": {
         boxSizing: "content-box",
-        padding: "60px 20px 0",
+        padding: "40px 20px 0",
         width: "calc(100% - 40px)"
       }
     }
