@@ -13,13 +13,13 @@ export const mainContent = style([
   flexGrow,
   width100,
   {
-    margin: "0 auto 16px",
+    margin: "0 auto 8px",
     maxWidth: "935px",
     "@media": {
       "(min-width: 736px)": {
         boxSizing: "content-box",
         justifyContent: "center",
-        padding: "40px 20px",
+        padding: "8px 20px",
         width: "calc(100% - 40px)"
       }
     }

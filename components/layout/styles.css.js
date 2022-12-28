@@ -53,3 +53,7 @@ globalStyle("article, div, footer", {
   padding: 0,
   position: "relative"
 });
+
+globalStyle("li", {
+  marginBottom: "8px"
+});

@@ -1,31 +1,35 @@
 import GridItem from "components/gridItem";
+import DynamicLatestBlog from "components/latest-blog/dynamic";
 import { mainContent, gridContainer, gridRow } from "styles/home.css";
 import { flexGrow } from "styles/misc.css";
 import chunk from "utils/chunk";
 
 export default function Home({ chunkProducts }) {
   return (
-    <section className={mainContent}>
-      <div>
-        <article className={flexGrow}>
-          <div>
-            <div className={gridContainer}>
-              {chunkProducts.map((producst, index) => (
-                <div key={index} className={gridRow}>
-                  {producst.map((product) => (
-                    <GridItem
-                      key={product.id}
-                      detail={product}
-                      source="homepage"
-                    />
-                  ))}
-                </div>
-              ))}
+    <>
+      <section className={mainContent}>
+        <div>
+          <article className={flexGrow}>
+            <div>
+              <div className={gridContainer}>
+                {chunkProducts.map((producst, index) => (
+                  <div key={index} className={gridRow}>
+                    {producst.map((product) => (
+                      <GridItem
+                        key={product.id}
+                        detail={product}
+                        source="homepage"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
-    </section>
+          </article>
+        </div>
+      </section>
+      <DynamicLatestBlog />
+    </>
   );
 }
 
