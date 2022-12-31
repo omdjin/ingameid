@@ -6,7 +6,7 @@ import { mainContent, bodyStyle } from "styles/blog.css";
 
 export default function Product({ taxonomies, product }) {
   const title = product.title.rendered;
-  const metaTitle = `Jual ${title} - Ingame.id`;
+  const metaTitle = `${title} - Ingame.id`;
   const parsedMetaTitle = parse(metaTitle);
   const parsedExcerpt = removeHTMLTags(product.excerpt.rendered).replace(
     /\n/g,
@@ -27,7 +27,10 @@ export default function Product({ taxonomies, product }) {
 
       {taxonomies["post_tag"] ? (
         <p>
-          Post Tag: <i>{taxonomies["post_tag"].name}</i>
+          Post Tag:{" "}
+          <i>
+            <strong>{taxonomies["post_tag"].name}</strong>
+          </i>
         </p>
       ) : null}
     </article>
