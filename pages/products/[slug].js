@@ -3,6 +3,7 @@ import parse from "html-react-parser";
 
 import Contact from "components/contact";
 import DynamicLatestBlog from "components/latest-blog/dynamic";
+import { HOSTNAME } from "constants";
 import removeHTMLTags from "utils/removeHTMLTags";
 import {
   mainContent,
@@ -64,6 +65,7 @@ export default function Product({ brand, product }) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
           />
+          <link rel="canonical" href={`${HOSTNAME}/products/${product.slug}`} />
         </Head>
         <div className={ltEKP}>
           <article className={articleStyle}>

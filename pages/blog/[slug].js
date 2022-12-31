@@ -1,6 +1,7 @@
 import Head from "next/head";
 import parse from "html-react-parser";
 
+import { HOSTNAME } from "constants";
 import removeHTMLTags from "utils/removeHTMLTags";
 import { mainContent, bodyStyle } from "styles/blog.css";
 
@@ -21,6 +22,7 @@ export default function Product({ taxonomies, product }) {
         <meta name="description" content={parsedExcerpt} />
         <meta property="og:title" content={parsedMetaTitle} />
         <meta property="og:description" content={parsedExcerpt} />
+        <link rel="canonical" href={`${HOSTNAME}/blog/${product.slug}`} />
       </Head>
       <h1 dangerouslySetInnerHTML={{ __html: title }} />
       <div className={bodyStyle} dangerouslySetInnerHTML={{ __html: body }} />
