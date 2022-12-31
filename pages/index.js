@@ -1,5 +1,7 @@
+import Head from "next/head";
 import GridItem from "components/gridItem";
 import DynamicLatestBlog from "components/latest-blog/dynamic";
+import { HOSTNAME } from "constants";
 import { mainContent, gridContainer, gridRow } from "styles/home.css";
 import { flexGrow } from "styles/misc.css";
 import chunk from "utils/chunk";
@@ -7,6 +9,9 @@ import chunk from "utils/chunk";
 export default function Home({ chunkProducts }) {
   return (
     <>
+      <Head>
+        <link rel="canonical" href={`${HOSTNAME}`} />
+      </Head>
       <section className={mainContent}>
         <div>
           <article className={flexGrow}>
