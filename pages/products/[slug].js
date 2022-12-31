@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 
 import Contact from "components/contact";
 import DynamicLatestBlog from "components/latest-blog/dynamic";
-import { HOSTNAME } from "constants";
+import { HOSTNAME, SITE_NAME } from "constants";
 import removeHTMLTags from "utils/removeHTMLTags";
 import {
   mainContent,
@@ -26,6 +26,7 @@ export default function Product({ brand, product }) {
     ""
   );
   const body = product.content.rendered;
+  const metaUrl = `${HOSTNAME}/products/${product.slug}`;
 
   const featuredmedia = product._embedded["wp:featuredmedia"][0];
   const mediaDetails = featuredmedia.media_details;
@@ -57,15 +58,23 @@ export default function Product({ brand, product }) {
           <meta name="description" content={parsedExcerpt} />
           <meta property="og:title" content={parsedMetaTitle} />
           <meta property="og:description" content={parsedExcerpt} />
+          <meta property="og:url" content={metaUrl} />
           <meta property="og:image" content={imageUrl} />
-          <meta name="twitter:card" content="summary" />
+          <meta property="og:site_name" content={SITE_NAME} />
+          <meta property="og:locale" content="id_ID" />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={parsedMetaTitle} />
+          <meta name="twitter:description" content={parsedExcerpt} />
+          <meta name="twitter:site" content="@ratriretno" />
           <meta name="twitter:image" content={imageUrl} />
           <meta name="twitter:site" content="@ratriretno" />
+          <meta name="twitter:creator" content="@ratriretno" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
           />
-          <link rel="canonical" href={`${HOSTNAME}/products/${product.slug}`} />
+          <link rel="canonical" href={metaUrl} />
         </Head>
         <div className={ltEKP}>
           <article className={articleStyle}>

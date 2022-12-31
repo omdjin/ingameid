@@ -20,7 +20,7 @@ const GridItem = ({ detail }) => {
         <div className={itemWrapper}>
           <div className={itemContainer}>
             <img
-              src={mediaSizes.full.source_url}
+              src={mediaSizes.medium.source_url}
               alt={featuredmedia.alt_text}
               className={itemImage}
             />
