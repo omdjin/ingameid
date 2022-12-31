@@ -5,7 +5,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
-        <meta charset="utf-8" />
         <link rel="shortcut icon" href="/static/icons/favicon.ico" />
         <meta
           name="viewport"

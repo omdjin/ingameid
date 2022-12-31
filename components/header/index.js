@@ -17,9 +17,9 @@ export default function Header({ children }) {
         <div className={headerLogoContainer}>
           <Link href="/">
             <div className={headerLogo}>
-              <span className={headerBrandLogo} aria-label="Ingame.id" />
+              <span className={headerBrandLogo} />
               <div className={headerSepatator} />
-              <span className={headerBrandLabel} aria-label="Ingame.id">
+              <span className={headerBrandLabel}>
                 INGAME : Voucher &amp; Topup Game
               </span>
             </div>
