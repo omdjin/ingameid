@@ -5,7 +5,7 @@ import { HOSTNAME, SITE_NAME } from "constants";
 import removeHTMLTags from "utils/removeHTMLTags";
 import { mainContent, bodyStyle } from "styles/blog.css";
 
-export default function BlogPost({ taxonomies, blogPost }) {
+export default function BlogPost({ blogPost, imageUrl, taxonomies }) {
   const title = blogPost.title.rendered;
   const metaTitle = `${title} - Ingame.id`;
   const parsedMetaTitle = parse(metaTitle);
@@ -15,10 +15,6 @@ export default function BlogPost({ taxonomies, blogPost }) {
   );
   const body = blogPost.content.rendered;
   const metaUrl = `${HOSTNAME}/blog/${blogPost.slug}`;
-  const featuredmedia = blogPost._embedded["wp:featuredmedia"][0];
-  const mediaDetails = featuredmedia.media_details;
-  const mediaSizes = mediaDetails.sizes;
-  const imageUrl = mediaSizes.large.source_url;
 
   return (
     <article className={mainContent}>
@@ -90,6 +86,13 @@ export async function getServerSideProps({ params, res }) {
     return { ...taxo };
   }, {});
 
+  const featuredmedia = blogPost._embedded["wp:featuredmedia"][0];
+  const mediaDetails = featuredmedia.media_details;
+  const mediaSizes = mediaDetails.sizes;
+  const imageUrl = mediaSizes.large
+    ? mediaSizes.large.source_url
+    : featuredmedia.source_url;
+
   // cache post for 900 seconds (15 minutes)
   res.setHeader(
     "Cache-Control",
@@ -98,6 +101,7 @@ export async function getServerSideProps({ params, res }) {
 
   return {
     props: {
+      imageUrl: imageUrl || "",
       blogPost,
       taxonomies: taxonomies || {}
     }
