@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 
 import Contact from "components/contact";
 import DynamicLatestBlog from "components/latest-blog/dynamic";
-import { HOSTNAME, SITE_NAME } from "constants";
+import { HOSTNAME, SITE_NAME } from "constants/index";
 import removeHTMLTags from "utils/removeHTMLTags";
 import {
   mainContent,

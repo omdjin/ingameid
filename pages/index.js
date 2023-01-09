@@ -1,7 +1,7 @@
 import Head from "next/head";
 import GridItem from "components/gridItem";
 import DynamicLatestBlog from "components/latest-blog/dynamic";
-import { HOSTNAME } from "constants";
+import { HOSTNAME } from "constants/index";
 import { mainContent, gridContainer, gridRow } from "styles/home.css";
 import { flexGrow } from "styles/misc.css";
 import chunk from "utils/chunk";
@@ -11,6 +11,7 @@ export default function Home({ chunkProducts }) {
     <>
       <Head>
         <link rel="canonical" href={`${HOSTNAME}`} />
+        <meta property="og:image" content={`${HOSTNAME}/static/img/logo.png`} />
       </Head>
       <section className={mainContent}>
         <div>
