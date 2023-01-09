@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 Allow: *.css
 Allow: *.js
+Disallow: /wp-json/*
+
