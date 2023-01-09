@@ -11,6 +11,7 @@ export default function Home({ chunkProducts }) {
     <>
       <Head>
         <link rel="canonical" href={`${HOSTNAME}`} />
+        <meta property="og:image" content={`${HOSTNAME}/static/img/logo.png`} />
       </Head>
       <section className={mainContent}>
         <div>
