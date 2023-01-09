@@ -1,7 +1,7 @@
 import Head from "next/head";
 import parse from "html-react-parser";
 
-import { HOSTNAME, SITE_NAME } from "constants";
+import { HOSTNAME, SITE_NAME } from "constants/index";
 import removeHTMLTags from "utils/removeHTMLTags";
 import { mainContent, bodyStyle } from "styles/blog.css";
 

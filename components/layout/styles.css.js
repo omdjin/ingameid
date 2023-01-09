@@ -57,3 +57,10 @@ globalStyle("article, div, footer", {
 globalStyle("li", {
   marginBottom: "8px"
 });
+
+globalStyle(".wp-caption-text", {
+  fontSize: "11px",
+  fontStyle: "italic",
+  fontWeight: 400,
+  marginBlockStart: "4px"
+});
