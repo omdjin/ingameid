@@ -1,12 +1,12 @@
 import Head from "next/head";
 import GridItem from "components/gridItem";
-import DynamicLatestBlog from "components/latest-blog/dynamic";
+import LatestBlogView from "components/latest-blog/index";
 import { HOSTNAME } from "constants/index";
 import { mainContent, gridContainer, gridRow } from "styles/home.css";
 import { flexGrow } from "styles/misc.css";
 import chunk from "utils/chunk";
 
-export default function Home({ chunkProducts }) {
+export default function Home({ blogs, chunkProducts }) {
   return (
     <>
       <Head>
@@ -34,16 +34,23 @@ export default function Home({ chunkProducts }) {
           </article>
         </div>
       </section>
-      <DynamicLatestBlog />
+      <LatestBlogView data={blogs} />
     </>
   );
 }
 
 export async function getServerSideProps({ res }) {
-  const url = `${process.env.NEXT_PUBLIC_API_HOST}/posts?_embed=wp:featuredmedia&categories=1`;
-  const responsePosts = await fetch(url);
-  const posts = await responsePosts.json();
-  const chunkProducts = chunk(posts, 3);
+  const HOST = process.env.NEXT_PUBLIC_API_HOST;
+  // get products
+  const urlProduct = `${HOST}/posts?_embed=wp:featuredmedia&categories=1`;
+  const responseProducts = await fetch(urlProduct);
+  const products = await responseProducts.json();
+  const chunkProducts = chunk(products, 3);
+
+  // get latest blogs
+  const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5`;
+  const responseBlogs = await fetch(urlBlogs);
+  const blogs = await responseBlogs.json();
 
   // cache homepage for 3600 seconds (1 hour)
   res.setHeader(
@@ -53,7 +60,8 @@ export async function getServerSideProps({ res }) {
 
   return {
     props: {
-      chunkProducts: (chunkProducts || []).reverse()
-    }
+      blogs,
+      chunkProducts: (chunkProducts || []).reverse(),
+    },
   };
 }
