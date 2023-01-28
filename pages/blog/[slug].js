@@ -1,11 +1,12 @@
 import Head from "next/head";
 import parse from "html-react-parser";
 
+import LatestBlogView from "components/latest-blog/index";
 import { HOSTNAME, SITE_NAME } from "constants/index";
 import removeHTMLTags from "utils/removeHTMLTags";
 import { mainContent, bodyStyle } from "styles/blog.css";
 
-export default function BlogPost({ blogPost, imageUrl, taxonomies }) {
+export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
   const title = blogPost.title.rendered;
   const metaTitle = `${title} - Ingame.id`;
   const parsedMetaTitle = parse(metaTitle);
@@ -17,51 +18,55 @@ export default function BlogPost({ blogPost, imageUrl, taxonomies }) {
   const metaUrl = `${HOSTNAME}/blog/${blogPost.slug}`;
 
   return (
-    <article className={mainContent}>
-      <Head>
-        <title>{parsedMetaTitle}</title>
-        <meta name="description" content={parsedExcerpt} />
-        <link rel="canonical" href={metaUrl} />
-        <meta property="og:title" content={parsedMetaTitle} />
-        <meta property="og:description" content={parsedExcerpt} />
-        <meta property="og:url" content={metaUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:locale" content="id_ID" />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={parsedMetaTitle} />
-        <meta name="twitter:description" content={parsedExcerpt} />
-        <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:site" content="@ratriretno" />
-        <meta name="twitter:creator" content="@ratriretno" />
-      </Head>
-      <h1 dangerouslySetInnerHTML={{ __html: title }} />
-      <div className={bodyStyle} dangerouslySetInnerHTML={{ __html: body }} />
+    <>
+      <article className={mainContent}>
+        <Head>
+          <title>{parsedMetaTitle}</title>
+          <meta name="description" content={parsedExcerpt} />
+          <link rel="canonical" href={metaUrl} />
+          <meta property="og:title" content={parsedMetaTitle} />
+          <meta property="og:description" content={parsedExcerpt} />
+          <meta property="og:url" content={metaUrl} />
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:site_name" content={SITE_NAME} />
+          <meta property="og:locale" content="id_ID" />
+          <meta property="og:type" content="article" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={parsedMetaTitle} />
+          <meta name="twitter:description" content={parsedExcerpt} />
+          <meta name="twitter:image" content={imageUrl} />
+          <meta name="twitter:site" content="@ratriretno" />
+          <meta name="twitter:creator" content="@ratriretno" />
+        </Head>
+        <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <div className={bodyStyle} dangerouslySetInnerHTML={{ __html: body }} />
 
-      {taxonomies["post_tag"] ? (
-        <p>
-          Post Tag:{" "}
-          <i>
-            <strong>{taxonomies["post_tag"].name}</strong>
-          </i>
-        </p>
-      ) : null}
-    </article>
+        {taxonomies["post_tag"] ? (
+          <p>
+            Post Tag:{" "}
+            <i>
+              <strong>{taxonomies["post_tag"].name}</strong>
+            </i>
+          </p>
+        ) : null}
+      </article>
+      <LatestBlogView data={blogs} />
+    </>
   );
 }
 
 export async function getServerSideProps({ params, res }) {
+  const HOST = process.env.NEXT_PUBLIC_API_HOST;
   const { slug } = params;
 
-  const url = `${process.env.NEXT_PUBLIC_API_HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&slug=${slug}`;
+  const url = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&slug=${slug}`;
   const responsePosts = await fetch(url);
   const posts = await responsePosts.json();
   const blogPost = posts[0];
 
   if (!blogPost) {
     return {
-      notFound: true
+      notFound: true,
     };
   }
 
@@ -79,7 +84,7 @@ export async function getServerSideProps({ params, res }) {
         id: item.id,
         name: item.name,
         slug: item.slug,
-        taxonomy: item.taxonomy
+        taxonomy: item.taxonomy,
       };
     });
 
@@ -93,6 +98,11 @@ export async function getServerSideProps({ params, res }) {
     ? mediaSizes.large.source_url
     : featuredmedia.source_url;
 
+  // get latest blogs randomly
+  const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5&orderby=rand`;
+  const responseBlogs = await fetch(urlBlogs);
+  const blogs = await responseBlogs.json();
+
   // cache post for 900 seconds (15 minutes)
   res.setHeader(
     "Cache-Control",
@@ -101,9 +111,10 @@ export async function getServerSideProps({ params, res }) {
 
   return {
     props: {
+      blogs,
       imageUrl: imageUrl || "",
       blogPost,
-      taxonomies: taxonomies || {}
-    }
+      taxonomies: taxonomies || {},
+    },
   };
 }
