@@ -69,7 +69,7 @@ export default function Product({ brand, product }) {
           <meta name="twitter:image" content={imageUrl} />
           <meta name="twitter:site" content="@ratriretno" />
           <meta name="twitter:creator" content="@ratriretno" />
-          <meta name="twitter:card" content="product" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:label1" content="Harga" />
           <meta name="twitter:data1" content="Rp1.399.000" />
           <meta name="twitter:label2" content="Lokasi" />
