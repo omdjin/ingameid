@@ -50,7 +50,7 @@ export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
           </p>
         ) : null}
       </article>
-      <LatestBlogView data={blogs} />
+      <LatestBlogView data={blogs} title="Artikel Lainnya" />
     </>
   );
 }
@@ -66,7 +66,7 @@ export async function getServerSideProps({ params, res }) {
 
   if (!blogPost) {
     return {
-      notFound: true,
+      notFound: true
     };
   }
 
@@ -84,19 +84,26 @@ export async function getServerSideProps({ params, res }) {
         id: item.id,
         name: item.name,
         slug: item.slug,
-        taxonomy: item.taxonomy,
+        taxonomy: item.taxonomy
       };
     });
 
     return { ...taxo };
   }, {});
 
-  const featuredmedia = blogPost._embedded["wp:featuredmedia"][0];
-  const mediaDetails = featuredmedia.media_details;
-  const mediaSizes = mediaDetails.sizes;
-  const imageUrl = mediaSizes.large
-    ? mediaSizes.large.source_url
-    : featuredmedia.source_url;
+  const featuredmedia = blogPost._embedded["wp:featuredmedia"]?.[0];
+  let imageUrl = "";
+
+  if (featuredmedia) {
+    const mediaDetails = featuredmedia.media_details;
+    const mediaSizes = mediaDetails.sizes;
+    imageUrl = mediaSizes.large
+      ? mediaSizes.large.source_url
+      : featuredmedia.source_url;
+  } else {
+    const imageUrl =
+      "https://ingame.farizal.id/wp-content/uploads/GPX-Mayy.webp";
+  }
 
   // get latest blogs randomly
   const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5&orderby=rand`;
@@ -112,9 +119,9 @@ export async function getServerSideProps({ params, res }) {
   return {
     props: {
       blogs,
-      imageUrl: imageUrl || "",
+      imageUrl,
       blogPost,
-      taxonomies: taxonomies || {},
-    },
+      taxonomies: taxonomies || {}
+    }
   };
 }
