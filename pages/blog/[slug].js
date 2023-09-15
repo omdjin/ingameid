@@ -50,7 +50,7 @@ export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
           </p>
         ) : null}
       </article>
-      <LatestBlogView data={blogs} />
+      <LatestBlogView data={blogs} title="Artikel Lainnya" />
     </>
   );
 }
