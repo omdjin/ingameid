@@ -41,11 +41,13 @@ export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         <div className={bodyStyle} dangerouslySetInnerHTML={{ __html: body }} />
 
-        {taxonomies["post_tag"] ? (
+        {taxonomies["post_tag"].length ? (
           <p>
             Post Tag:{" "}
             <i>
-              <strong>{taxonomies["post_tag"].name}</strong>
+              <strong>
+                {taxonomies["post_tag"].map((tag) => tag.name).join(", ")}
+              </strong>
             </i>
           </p>
         ) : null}
@@ -80,12 +82,15 @@ export async function getServerSideProps({ params, res }) {
     let taxo = { ...accumulator };
 
     currentValue.forEach((item) => {
-      taxo[item.taxonomy] = {
+      const addedTaxo = {
         id: item.id,
         name: item.name,
         slug: item.slug,
         taxonomy: item.taxonomy
       };
+      taxo[item.taxonomy] = taxo[item.taxonomy]
+        ? [...taxo[item.taxonomy], addedTaxo]
+        : [addedTaxo];
     });
 
     return { ...taxo };
