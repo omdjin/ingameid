@@ -10,7 +10,7 @@ const PostCard = ({ detail }) => {
 
   const postExcerpt = (detail.excerpt.rendered || "").replace(
     "[&hellip;]",
-    "&hellip;"
+    "..."
   );
 
   return (
