@@ -5,7 +5,7 @@ import {
   itemsCenter,
   justifyCenter,
   whiteBg,
-  width100
+  width100,
 } from "styles/misc.css";
 import { blackPrimary, borderBlack } from "styles/colors";
 
@@ -21,8 +21,8 @@ export const headerClass = style([
     zIndex: 1,
     borderBottom: "1px solid rgba(0, 0, 0, 0.0975)",
     margin: 0,
-    padding: 0
-  }
+    padding: 0,
+  },
 ]);
 
 export const headerWrapper = style([
@@ -33,19 +33,22 @@ export const headerWrapper = style([
     height: "52px",
     padding: "0 20px",
     flexDirection: "row",
-    maxWidth: "1010px"
-  }
+    maxWidth: "1010px",
+  },
 ]);
 
 export const headerLogoContainer = style({
   flex: "1 9999 0%",
-  minWidth: "40px"
+  minWidth: "40px",
+  a: {
+    width: "330px",
+  },
 });
 
 export const headerLogo = style({
   flex: "0 0 auto",
   justifyContent: "flex-start",
-  flexDirection: "row"
+  flexDirection: "row",
 });
 
 export const headerBrandLogo = style({
@@ -54,7 +57,7 @@ export const headerBrandLogo = style({
   backgroundSize: "cover",
   height: "24px",
   width: "24px",
-  marginTop: "2px"
+  marginTop: "2px",
 });
 
 export const headerSepatator = style({
@@ -64,13 +67,13 @@ export const headerSepatator = style({
   "@media": {
     "(min-width: 736px)": {
       backgroundColor: borderBlack,
-      margin: "0 16px"
-    }
-  }
+      margin: "0 16px",
+    },
+  },
 });
 
 export const headerBrandLabel = style({
   marginTop: "3px",
   fontWeight: 600,
-  color: blackPrimary
+  color: blackPrimary,
 });

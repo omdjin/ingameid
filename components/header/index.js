@@ -7,7 +7,7 @@ import {
   headerLogoContainer,
   headerBrandLogo,
   headerSepatator,
-  headerBrandLabel
+  headerBrandLabel,
 } from "./styles.css";
 
 export default function Header({ children }) {
