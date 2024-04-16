@@ -14,4 +14,17 @@ export const postItem = style({
   img: {
     height: "auto",
   },
+  "@media": {
+    "(max-width: 500px)": {
+      flex: "0 0 100%",
+      maxWidth: "100%",
+    },
+  },
+});
+
+export const styExcerpt = style({
+  overflow: "hidden",
+  display: "-webkit-box",
+  "-webkit-line-clamp": "6",
+  "-webkit-box-orient": "vertical",
 });

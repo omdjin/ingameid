@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { HOSTNAME, SITE_NAME } from "constants/index";
 import PostCard from "components/postCard";
-import { container, row } from "styles/tag.css";
+import { heading, container, row } from "styles/tag.css";
 
 export default function TagPage({ tagDetail, blogs }) {
   const pageTitle = `Tag: ${tagDetail.name} - ${SITE_NAME}`;
@@ -28,7 +28,7 @@ export default function TagPage({ tagDetail, blogs }) {
       </Head>
       <div className={container}>
         <div>
-          <h1>Tag: {tagDetail.name}</h1>
+          <h1 className={heading}>Tag: {tagDetail.name}</h1>
         </div>
         <div>
           <div className={row}>

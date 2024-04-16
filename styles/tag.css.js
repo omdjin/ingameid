@@ -2,6 +2,10 @@ import { style } from "@vanilla-extract/css";
 
 import { flexGrow, width100 } from "styles/misc.css";
 
+export const heading = style({
+  padding: "0 15px",
+});
+
 export const container = style([
   flexGrow,
   width100,

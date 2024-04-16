@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import getPostImage from "utils/getPostImage";
 
-import { postItem } from "./styles.css";
+import { postItem, styExcerpt } from "./styles.css";
 
 const PostCard = ({ detail }) => {
   const postTitle = detail.title.rendered;
@@ -31,7 +31,10 @@ const PostCard = ({ detail }) => {
               height={postImage.h}
             />
           </Link>
-          <div dangerouslySetInnerHTML={{ __html: postExcerpt }} />
+          <div
+            className={styExcerpt}
+            dangerouslySetInnerHTML={{ __html: postExcerpt }}
+          />
         </div>
       </article>
     </div>
