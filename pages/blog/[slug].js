@@ -1,15 +1,20 @@
+import { Fragment } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import parse from "html-react-parser";
 
 import LatestBlogView from "components/latest-blog/index";
 import { HOSTNAME, SITE_NAME } from "constants/index";
+import getPostImage from "utils/getPostImage";
+import getTaxonomies from "utils/getTaxonomies";
 import removeHTMLTags from "utils/removeHTMLTags";
 import { mainContent, bodyStyle } from "styles/blog.css";
 
-export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
+export default function BlogPost({ blogs, blogPost, postImage, taxonomies }) {
   const title = blogPost.title.rendered;
-  const metaTitle = `${title} - Ingame.id`;
+  const metaTitle = `${title} - ${SITE_NAME}`;
   const parsedMetaTitle = parse(metaTitle);
+  const imageUrl = postImage.url;
   const parsedExcerpt = removeHTMLTags(blogPost.excerpt.rendered).replace(
     /\n/g,
     ""
@@ -46,7 +51,14 @@ export default function BlogPost({ blogs, blogPost, imageUrl, taxonomies }) {
             Post Tag:{" "}
             <i>
               <strong>
-                {taxonomies["post_tag"].map((tag) => tag.name).join(", ")}
+                {taxonomies["post_tag"].map((tag, index) => {
+                  return (
+                    <Fragment key={tag.id}>
+                      <Link href={`/tag/${tag.slug}`}>{tag.name}</Link>
+                      {index + 1 < taxonomies["post_tag"].length && `, `}
+                    </Fragment>
+                  );
+                })}
               </strong>
             </i>
           </p>
@@ -68,47 +80,15 @@ export async function getServerSideProps({ params, res }) {
 
   if (!blogPost) {
     return {
-      notFound: true
+      notFound: true,
     };
   }
 
   const wpTerm = blogPost._embedded["wp:term"];
 
-  const taxonomies = wpTerm.reduce((accumulator, currentValue) => {
-    if (!currentValue.length) {
-      return accumulator;
-    }
+  const taxonomies = getTaxonomies(wpTerm);
 
-    let taxo = { ...accumulator };
-
-    currentValue.forEach((item) => {
-      const addedTaxo = {
-        id: item.id,
-        name: item.name,
-        slug: item.slug,
-        taxonomy: item.taxonomy
-      };
-      taxo[item.taxonomy] = taxo[item.taxonomy]
-        ? [...taxo[item.taxonomy], addedTaxo]
-        : [addedTaxo];
-    });
-
-    return { ...taxo };
-  }, {});
-
-  const featuredmedia = blogPost._embedded["wp:featuredmedia"]?.[0];
-  let imageUrl = "";
-
-  if (featuredmedia) {
-    const mediaDetails = featuredmedia.media_details;
-    const mediaSizes = mediaDetails.sizes;
-    imageUrl = mediaSizes.large
-      ? mediaSizes.large.source_url
-      : featuredmedia.source_url;
-  } else {
-    const imageUrl =
-      "https://ingame.farizal.id/wp-content/uploads/GPX-Mayy.webp";
-  }
+  const postImage = getPostImage(blogPost);
 
   // get latest blogs randomly
   const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5&orderby=rand`;
@@ -124,9 +104,9 @@ export async function getServerSideProps({ params, res }) {
   return {
     props: {
       blogs,
-      imageUrl,
+      postImage,
       blogPost,
-      taxonomies: taxonomies || {}
-    }
+      taxonomies: taxonomies || {},
+    },
   };
 }
