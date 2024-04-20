@@ -14,7 +14,7 @@ export default function BlogPost({
   blogs,
   blogPost,
   ldJson,
-  parsedExcerpt,
+  metaDesc,
   postImage,
   taxonomies,
 }) {
@@ -30,10 +30,10 @@ export default function BlogPost({
       <article className={mainContent}>
         <Head>
           <title>{parsedMetaTitle}</title>
-          <meta name="description" content={parsedExcerpt} />
+          <meta name="description" content={metaDesc} />
           <link rel="canonical" href={metaUrl} />
           <meta property="og:title" content={parsedMetaTitle} />
-          <meta property="og:description" content={parsedExcerpt} />
+          <meta property="og:description" content={metaDesc} />
           <meta property="og:url" content={metaUrl} />
           <meta property="og:image" content={imageUrl} />
           <meta property="og:site_name" content={SITE_NAME} />
@@ -41,7 +41,7 @@ export default function BlogPost({
           <meta property="og:type" content="article" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={parsedMetaTitle} />
-          <meta name="twitter:description" content={parsedExcerpt} />
+          <meta name="twitter:description" content={metaDesc} />
           <meta name="twitter:image" content={imageUrl} />
           <meta name="twitter:site" content="@ratriretno" />
           <meta name="twitter:creator" content="@ratriretno" />
@@ -107,6 +107,8 @@ export async function getServerSideProps({ params, res }) {
   const parsedExcerpt = removeHTMLTags(blogPost.excerpt.rendered)
     .replace(/\n/g, "")
     .replace("[&hellip;]", "...");
+  const yoastDesc = blogPost?.yoast_head_json?.description;
+  const metaDesc = yoastDesc || parsedExcerpt;
   const authorAvatar =
     "https://secure.gravatar.com/avatar/6e9b17ce6105c1f6725b6bd35c158b4b?s=96&d=mm&r=g";
   const ldJson = JSON.stringify({
@@ -165,7 +167,7 @@ export async function getServerSideProps({ params, res }) {
         publisher: {
           "@id": `${HOSTNAME}/#organization`,
         },
-        description: parsedExcerpt,
+        description: metaDesc,
         name: postTitle,
       },
     ],
@@ -183,7 +185,7 @@ export async function getServerSideProps({ params, res }) {
       ldJson,
       postImage,
       blogPost,
-      parsedExcerpt,
+      metaDesc,
       taxonomies: taxonomies || {},
     },
   };

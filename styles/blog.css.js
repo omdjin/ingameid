@@ -7,10 +7,11 @@ export const mainContent = style([
   width100,
   {
     margin: "0 auto",
-    maxWidth: "616px",
+    maxWidth: "935px",
+    padding: "0 20px",
     "@media": {
       "(max-width: 500px)": {
-        padding: "0 8px",
+        padding: "0 16px",
       },
     },
   },
@@ -18,13 +19,27 @@ export const mainContent = style([
 
 export const bodyStyle = style({
   lineHeight: "1.75",
-  fontSize: "1rem",
+  fontSize: "1.17rem",
+  "h2, h3, h4, h5": {
+    margin: 0,
+  },
+  p: {
+    marginBottom: "1rem",
+    marginTop: 0,
+  },
+  ".wp-caption, img": {
+    maxWidth: "100%",
+    height: "auto",
+  },
+  ol: {
+    paddingInlineStart: "20px",
+  },
 });
 
-globalStyle(`${bodyStyle} img`, {
-  maxWidth: "100%",
-  height: "auto",
-});
+// globalStyle(`${bodyStyle} img`, {
+//   maxWidth: "100%",
+//   height: "auto",
+// });
 
 globalStyle(`${bodyStyle} ol`, {
   paddingInlineStart: "20px",
