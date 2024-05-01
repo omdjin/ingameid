@@ -35,11 +35,18 @@ export const footerSpan = style({
 
 export const pagesStyle = style({
   display: "inline",
+  alignSelf: "center",
+
   a: {
     marginLeft: "8px",
     color: blackPrimary,
   },
   "a:hover": {
     color: orangePrimary,
+  },
+  "@media": {
+    "(max-width: 500px)": {
+      marginTop: "8px",
+    },
   },
 });
