@@ -147,7 +147,7 @@ export async function getServerSideProps({ params, res }) {
   // cache post for 900 seconds (15 minutes)
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=900, stale-while-revalidate=60"
+    "public, s-maxage=900, stale-while-revalidate=900"
   );
 
   return {

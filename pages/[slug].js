@@ -2,7 +2,7 @@ import Head from "next/head";
 import parse from "html-react-parser";
 
 import { HOSTNAME, SITE_NAME } from "constants/index";
-import removeHTMLTags from "utils/removeHTMLTags";
+import { normalizePageDetail } from "utils/normalizePostData";
 import { mainContent, titleStyle, bodyStyle } from "styles/blog.css";
 
 export default function Page({ pageData, metaDesc }) {
@@ -51,30 +51,22 @@ export async function getServerSideProps({ params, res }) {
   const url = `${HOST}/pages?slug=${slug}`;
   const responsePages = await fetch(url);
   const pages = await responsePages.json();
-  const pageData = pages[0];
+  const _pageData = pages[0];
 
   const env = process.env.NODE_ENV;
 
-  if (!pageData) {
+  if (!_pageData) {
     return {
       notFound: true,
     };
   }
+  const { blogPost: pageData, metaDesc } = normalizePageDetail(_pageData);
 
-  // Rich Snippets
-  const parsedExcerpt = removeHTMLTags(pageData.excerpt.rendered)
-    .replace(/\n/g, "")
-    .replace("[&hellip;]", "...");
-  const yoastDesc = pageData?.yoast_head_json?.description;
-  const metaDesc = yoastDesc || parsedExcerpt;
-
-  if (env !== "development") {
-    // cache post for 900 seconds (15 minutes)
-    res.setHeader(
-      "Cache-Control",
-      "public, s-maxage=900, stale-while-revalidate=60"
-    );
-  }
+  // cache post for 900 seconds (15 minutes)
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=900, stale-while-revalidate=900"
+  );
 
   return {
     props: {
