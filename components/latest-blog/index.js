@@ -1,6 +1,6 @@
 import PostCard from "components/postCard";
 
-import { row, sectionStyle } from "./styles.css";
+import { row, sectionStyle, headingStyle } from "./styles.css";
 
 export default function LatestBlog({
   data,
@@ -9,7 +9,7 @@ export default function LatestBlog({
 }) {
   return (
     <section className={sectionStyle}>
-      <h2>{title}</h2>
+      <h2 className={headingStyle}>{title}</h2>
       <div className={row}>
         {data.map((blogPost, index) => {
           return (
