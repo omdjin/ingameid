@@ -19,9 +19,7 @@ export default function Header({ children }) {
             <div className={headerLogo}>
               <span className={headerBrandLogo} />
               <div className={headerSepatator} />
-              <span className={headerBrandLabel}>
-                INGAME : Voucher &amp; Topup Game
-              </span>
+              <span className={headerBrandLabel}>Ingame.ID</span>
             </div>
           </Link>
         </div>

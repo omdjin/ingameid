@@ -8,7 +8,7 @@ import { HOSTNAME, SITE_NAME } from "constants/index";
 import getPostImage from "utils/getPostImage";
 import getTaxonomies from "utils/getTaxonomies";
 import removeHTMLTags from "utils/removeHTMLTags";
-import { mainContent, bodyStyle } from "styles/blog.css";
+import { mainContent, titleStyle, bodyStyle } from "styles/blog.css";
 
 export default function BlogPost({
   blogs,
@@ -50,7 +50,10 @@ export default function BlogPost({
             dangerouslySetInnerHTML={{ __html: ldJson }}
           />
         </Head>
-        <h1 dangerouslySetInnerHTML={{ __html: title }} />
+        <h1
+          dangerouslySetInnerHTML={{ __html: title }}
+          className={titleStyle}
+        />
         <div className={bodyStyle} dangerouslySetInnerHTML={{ __html: body }} />
 
         {taxonomies["post_tag"].length ? (
@@ -98,7 +101,7 @@ export async function getServerSideProps({ params, res }) {
   const postImage = getPostImage(blogPost);
 
   // get latest blogs randomly
-  const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5&orderby=rand`;
+  const urlBlogs = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&page=1&per_page=6&orderby=rand`;
   const responseBlogs = await fetch(urlBlogs);
   const blogs = await responseBlogs.json();
 

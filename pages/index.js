@@ -34,7 +34,7 @@ export default function Home({ blogs, chunkProducts }) {
           </article>
         </div>
       </section>
-      <LatestBlogView data={blogs} />
+      <LatestBlogView data={blogs} usePrioImage />
     </>
   );
 }
@@ -48,7 +48,7 @@ export async function getServerSideProps({ res }) {
   const chunkProducts = chunk(products, 3);
 
   // get latest blogs
-  const urlBlogs = `${HOST}/posts?_embed=wp:term&categories=10&page=1&per_page=5`;
+  const urlBlogs = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&page=1&per_page=6`;
   const responseBlogs = await fetch(urlBlogs);
   const blogs = await responseBlogs.json();
 

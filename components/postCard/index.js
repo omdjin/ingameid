@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import getPostImage from "utils/getPostImage";
 
-import { postItem, styExcerpt } from "./styles.css";
+import { postItem, styExcerpt, styImgContainer } from "./styles.css";
 
-const PostCard = ({ detail }) => {
+const PostCard = ({ detail, isFeatured = false, isImagePrio = false }) => {
   const postTitle = detail.title.rendered;
   const postImage = getPostImage(detail);
 
@@ -12,29 +12,46 @@ const PostCard = ({ detail }) => {
     "[&hellip;]",
     "..."
   );
+  const datePosted = new Date(detail.date);
+  const dateFormatted = new Intl.DateTimeFormat("id-ID", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  }).format(datePosted);
 
   return (
     <div className={postItem}>
       <article>
         <div>
-          <h2>
-            <Link
-              href={`/blog/${detail.slug}`}
-              dangerouslySetInnerHTML={{ __html: detail.title.rendered }}
-            />
-          </h2>
-          <Link href={`/blog/${detail.slug}`} title={postImage.alt}>
+          <Link
+            href={`/blog/${detail.slug}`}
+            title={postImage.alt}
+            rel="nofollow"
+            className={styImgContainer}
+          >
             <Image
               src={postImage.url}
               alt={postImage.alt}
               width={postImage.w}
               height={postImage.h}
+              priority={isImagePrio}
             />
           </Link>
-          <div
-            className={styExcerpt}
-            dangerouslySetInnerHTML={{ __html: postExcerpt }}
-          />
+          <h2>
+            <Link
+              href={`/blog/${detail.slug}`}
+              dangerouslySetInnerHTML={{ __html: postTitle }}
+            />
+          </h2>
+          <div className="meta">
+            <span className="date">{dateFormatted}</span>
+          </div>
+          {isFeatured && (
+            <div
+              className={styExcerpt}
+              dangerouslySetInnerHTML={{ __html: postExcerpt }}
+            />
+          )}
         </div>
       </article>
     </div>

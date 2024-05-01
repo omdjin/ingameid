@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import parse from "html-react-parser";
 
 import Contact from "components/contact";
@@ -14,7 +15,8 @@ import {
   imageContainer,
   imageOverflow,
   imageStyle,
-  contentWrap
+  contentWrap,
+  bodySEOStyle,
 } from "styles/products.css";
 
 export default function Product({ brand, product }) {
@@ -41,14 +43,15 @@ export default function Product({ brand, product }) {
     sku: `P-${product.id}-${product.slug}`,
     brand: {
       "@type": "Thing",
-      name: `${brand}`
+      name: `${brand}`,
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.7",
-      reviewCount: "89"
-    }
+      reviewCount: "89",
+    },
   };
+  const bottomSEO = product.meta.metabox_seo_id || "";
 
   return (
     <>
@@ -85,10 +88,14 @@ export default function Product({ brand, product }) {
               <div role="button" tabIndex="0">
                 <div className={imageContainer}>
                   <div className={imageOverflow}>
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={parsedMetaTitle}
                       className={imageStyle}
+                      width={500}
+                      height={500}
+                      priority
+                      loading="eager"
                     />
                   </div>
                 </div>
@@ -99,6 +106,12 @@ export default function Product({ brand, product }) {
               <Contact productName={title} />
             </div>
           </article>
+          {Boolean(bottomSEO) && (
+            <div
+              className={bodySEOStyle}
+              dangerouslySetInnerHTML={{ __html: bottomSEO }}
+            />
+          )}
         </div>
       </div>
       <DynamicLatestBlog />
@@ -116,7 +129,7 @@ export async function getServerSideProps({ params, res }) {
 
   if (!product) {
     return {
-      notFound: true
+      notFound: true,
     };
   }
 
@@ -140,7 +153,7 @@ export async function getServerSideProps({ params, res }) {
   return {
     props: {
       brand: brand.name || "",
-      product
-    }
+      product,
+    },
   };
 }
