@@ -5,6 +5,10 @@ import { HOSTNAME } from "constants/index";
 import { mainContent, gridContainer, gridRow } from "styles/home.css";
 import { flexGrow } from "styles/misc.css";
 import chunk from "utils/chunk";
+import {
+  normalizeProducts,
+  normalizePostWidget,
+} from "utils/normalizePostData";
 
 export default function Home({ blogs, chunkProducts }) {
   return (
@@ -44,13 +48,15 @@ export async function getServerSideProps({ res }) {
   // get products
   const urlProduct = `${HOST}/posts?_embed=wp:featuredmedia&categories=1`;
   const responseProducts = await fetch(urlProduct);
-  const products = await responseProducts.json();
+  const _products = await responseProducts.json();
+  const products = normalizeProducts(_products);
   const chunkProducts = chunk(products, 3);
 
   // get latest blogs
   const urlBlogs = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&page=1&per_page=6`;
   const responseBlogs = await fetch(urlBlogs);
-  const blogs = await responseBlogs.json();
+  const _blogs = await responseBlogs.json();
+  const blogs = normalizePostWidget(_blogs);
 
   // cache homepage for 3600 seconds (1 hour)
   res.setHeader(

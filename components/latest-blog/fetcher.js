@@ -1,4 +1,5 @@
 import useFetch from "hooks/useFetch";
+import { normalizePostWidget } from "utils/normalizePostData";
 import LatestBlog from "./index";
 
 export default function FetcherProvider() {
@@ -14,5 +15,7 @@ export default function FetcherProvider() {
     return <div>Loading..</div>;
   }
 
-  return <LatestBlog data={data} />;
+  const normalizedData = normalizePostWidget(data);
+
+  return <LatestBlog data={normalizedData} />;
 }

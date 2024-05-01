@@ -5,9 +5,10 @@ import parse from "html-react-parser";
 
 import LatestBlogView from "components/latest-blog/index";
 import { HOSTNAME, SITE_NAME } from "constants/index";
-import getPostImage from "utils/getPostImage";
-import getTaxonomies from "utils/getTaxonomies";
-import removeHTMLTags from "utils/removeHTMLTags";
+import {
+  normalizePostDetail,
+  normalizePostWidget,
+} from "utils/normalizePostData";
 import { mainContent, titleStyle, bodyStyle } from "styles/blog.css";
 
 export default function BlogPost({
@@ -86,95 +87,22 @@ export async function getServerSideProps({ params, res }) {
   const url = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&slug=${slug}`;
   const responsePosts = await fetch(url);
   const posts = await responsePosts.json();
-  const blogPost = posts[0];
+  const _blogPost = posts[0];
 
-  if (!blogPost) {
+  if (!_blogPost) {
     return {
       notFound: true,
     };
   }
 
-  const wpTerm = blogPost._embedded["wp:term"];
-
-  const taxonomies = getTaxonomies(wpTerm);
-
-  const postImage = getPostImage(blogPost);
+  const { blogPost, ldJson, taxonomies, postImage, metaDesc } =
+    normalizePostDetail(_blogPost);
 
   // get latest blogs randomly
   const urlBlogs = `${HOST}/posts?_embed=wp:featuredmedia,wp:term&categories=10&page=1&per_page=6&orderby=rand`;
   const responseBlogs = await fetch(urlBlogs);
-  const blogs = await responseBlogs.json();
-
-  // Rich Snippets
-  const postTitle = removeHTMLTags(blogPost.title.rendered).replace(/\n/g, "");
-  const parsedExcerpt = removeHTMLTags(blogPost.excerpt.rendered)
-    .replace(/\n/g, "")
-    .replace("[&hellip;]", "...");
-  const yoastDesc = blogPost?.yoast_head_json?.description;
-  const metaDesc = yoastDesc || parsedExcerpt;
-  const authorAvatar =
-    "https://secure.gravatar.com/avatar/6e9b17ce6105c1f6725b6bd35c158b4b?s=96&d=mm&r=g";
-  const ldJson = JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["NewsMediaOrganization", "Organization"],
-        id: `${HOSTNAME}/#organization`,
-        name: SITE_NAME,
-        url: HOSTNAME,
-        sameAs: [
-          "https://www.instagram.com/id.ingame/",
-          "https://www.tiktok.com/@tkpd.nightwish",
-        ],
-        logo: {
-          "@type": "ImageObject",
-          id: `${HOSTNAME}/#logo`,
-          url: "https://ingame.id/static/icons/android-icon-192x192.png",
-          contentUrl: "https://ingame.id/static/icons/android-icon-192x192.png",
-          caption: SITE_NAME,
-          inLanguage: "id",
-          width: 192,
-          height: 192,
-        },
-      },
-      {
-        "@type": "NewsArticle",
-        headline: postTitle,
-        image: [postImage.url],
-        datePublished: `${blogPost.date_gmt}+07:00`,
-        dateModified: `${blogPost.modified_gmt}+07:00`,
-        articleSection: taxonomies["post_tag"]
-          .map((item) => item.name)
-          .join(", "),
-        author: [
-          {
-            "@type": "Person",
-            name: "Ingame",
-            url: HOSTNAME,
-            image: {
-              "@type": "ImageObject",
-              id: authorAvatar,
-              url: authorAvatar,
-              caption: "Ingame",
-              inLanguage: "id",
-            },
-            worksFor: {
-              "@id": `${HOSTNAME}/#organization`,
-            },
-          },
-        ],
-        copyrightYear: "2024",
-        copyrightHolder: {
-          "@id": `${HOSTNAME}/#organization`,
-        },
-        publisher: {
-          "@id": `${HOSTNAME}/#organization`,
-        },
-        description: metaDesc,
-        name: postTitle,
-      },
-    ],
-  });
+  const _blogs = await responseBlogs.json();
+  const blogs = normalizePostWidget(_blogs);
 
   // cache post for 900 seconds (15 minutes)
   res.setHeader(
@@ -189,7 +117,7 @@ export async function getServerSideProps({ params, res }) {
       postImage,
       blogPost,
       metaDesc,
-      taxonomies: taxonomies || {},
+      taxonomies,
     },
   };
 }

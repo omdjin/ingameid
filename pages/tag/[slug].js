@@ -2,6 +2,10 @@ import Head from "next/head";
 import { HOSTNAME, SITE_NAME } from "constants/index";
 import PostCard from "components/postCard";
 import { heading, container, row } from "styles/tag.css";
+import {
+  normalizeTagDetail,
+  normalizePostWidget,
+} from "utils/normalizePostData";
 
 export default function TagPage({ tagDetail, blogs }) {
   const pageTitle = `Tag: ${tagDetail.name} - ${SITE_NAME}`;
@@ -31,6 +35,7 @@ export default function TagPage({ tagDetail, blogs }) {
       <div className={container}>
         <div>
           <h1 className={heading}>{tagDetail.name}</h1>
+          <p style={{ padding: "0 16px" }}>{tagDesc}</p>
         </div>
         <div>
           <div className={row}>
@@ -51,17 +56,18 @@ export async function getServerSideProps({ params, res }) {
   const detailApiUrl = `${HOST}/tags?slug=${slug}`;
   const responseTag = await fetch(detailApiUrl);
   const tags = await responseTag.json();
-  const tagDetail = tags[0];
+  const _tagDetail = tags[0];
 
-  if (!tagDetail) {
+  if (!_tagDetail) {
     return {
       notFound: true,
     };
   }
-
+  const tagDetail = normalizeTagDetail(_tagDetail);
   const urlPosts = `${HOST}/posts?_embed=wp:featuredmedia&tags=${tagDetail.id}`;
   const responsePosts = await fetch(urlPosts);
-  const blogs = await responsePosts.json();
+  const _blogs = await responsePosts.json();
+  const blogs = normalizePostWidget(_blogs);
 
   return {
     props: {
