@@ -69,6 +69,12 @@ export async function getServerSideProps({ params, res }) {
   const _blogs = await responsePosts.json();
   const blogs = normalizePostWidget(_blogs);
 
+  // cache post for 900 seconds (15 minutes)
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=900, stale-while-revalidate=900"
+  );
+
   return {
     props: {
       tagDetail,
