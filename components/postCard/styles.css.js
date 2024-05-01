@@ -8,11 +8,35 @@ export const postItem = style({
   width: "100%",
   paddingRight: 15,
   paddingLeft: 15,
+  marginBottom: "1.33em",
   "*": {
     display: "block",
   },
+  h2: {
+    marginBlockStart: "0.33em",
+    marginBlockEnd: "0em",
+    fontSize: "1.2rem",
+    a: {
+      color: "#14171a",
+    },
+  },
+  ":hover": {
+    "h2 > a": {
+      color: "#2f8a95",
+    },
+    img: {
+      transform: "scale(1.15)",
+    },
+  },
   img: {
     height: "auto",
+    maxHeight: "265px",
+    objectFit: "cover",
+    transition: "all .4s ease-in-out 0s",
+  },
+  ".meta": {
+    fontSize: "0.7rem",
+    color: "#393838",
   },
   "@media": {
     "(max-width: 500px)": {
@@ -27,4 +51,16 @@ export const styExcerpt = style({
   display: "-webkit-box",
   "-webkit-line-clamp": "6",
   "-webkit-box-orient": "vertical",
+});
+
+export const styImgContainer = style({
+  width: "auto",
+  height: "265px",
+  overflow: "hidden",
+
+  "@media": {
+    "(max-width: 500px)": {
+      height: "auto",
+    },
+  },
 });

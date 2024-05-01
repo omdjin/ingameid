@@ -3,7 +3,7 @@ import LatestBlog from "./index";
 
 export default function FetcherProvider() {
   const { data, error, isLoading } = useFetch(
-    `/posts?_embed=wp:term&categories=10&page=1&per_page=5`
+    `/posts?_embed=wp:featuredmedia,wp:term&categories=10&page=1&per_page=6`
   );
 
   if (error || !data || data.length < 1) {

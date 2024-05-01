@@ -1,23 +1,26 @@
-import Link from "next/link";
-import parse from "html-react-parser";
+import PostCard from "components/postCard";
 
-import { sectionStyle } from "./styles.css";
+import { row, sectionStyle } from "./styles.css";
 
-export default function LatestBlog({ data, title = "Latest Blog Posts" }) {
+export default function LatestBlog({
+  data,
+  title = "Artikel Terbaru",
+  usePrioImage = false,
+}) {
   return (
     <section className={sectionStyle}>
       <h2>{title}</h2>
-      <ol>
-        {data.map((item) => {
-          const title = item.title.rendered;
-          const parsedTitle = parse(title);
+      <div className={row}>
+        {data.map((blogPost, index) => {
           return (
-            <li key={item.id}>
-              <Link href={`/blog/${item.slug}`}>{parsedTitle}</Link>
-            </li>
+            <PostCard
+              detail={blogPost}
+              key={blogPost.id}
+              isImagePrio={usePrioImage && index === 0}
+            />
           );
         })}
-      </ol>
+      </div>
     </section>
   );
 }

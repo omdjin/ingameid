@@ -5,7 +5,7 @@ import {
   flexGrow,
   itemsCenter,
   pAbsolute,
-  width100
+  width100,
 } from "styles/misc.css";
 import { grey, whiteSecondary } from "styles/colors";
 
@@ -20,10 +20,10 @@ export const mainContent = style([
         boxSizing: "content-box",
         justifyContent: "center",
         padding: "8px 20px",
-        width: "calc(100% - 40px)"
-      }
-    }
-  }
+        width: "calc(100% - 40px)",
+      },
+    },
+  },
 ]);
 
 export const ltEKP = style({
@@ -31,9 +31,9 @@ export const ltEKP = style({
     "(min-width: 736px)": {
       alignItems: "center",
       width: "100%",
-      margin: "0 auto"
-    }
-  }
+      margin: "0 auto",
+    },
+  },
 });
 
 export const articleStyle = style([
@@ -45,10 +45,10 @@ export const articleStyle = style([
         backgroundColor: "white",
         border: "1px solid #e6e6e6",
         borderBottomRightRadius: "3px",
-        borderTopRightRadius: "3px"
-      }
-    }
-  }
+        borderTopRightRadius: "3px",
+      },
+    },
+  },
 ]);
 
 export const headerStyle = style([
@@ -57,25 +57,20 @@ export const headerStyle = style([
     borderBottomWidth: "0.5px",
     padding: "16px",
     paddingRight: "40px",
+    h1: {
+      fontSize: "2em",
+      margin: 0,
+    },
     "@media": {
       "(min-width: 736px)": {
-        position: "absolute",
         borderBottom: `1px solid ${grey}`,
-        padding: "20px 0",
+        padding: "20px",
         maxHeight: "78px",
         marginRight: 0,
-        right: "24px",
-        top: 0,
-        width: "287px"
-      }
-    }
-  }
+      },
+    },
+  },
 ]);
-
-globalStyle(`${headerStyle} h1`, {
-  fontSize: "16px",
-  margin: 0
-});
 
 export const imageHolder = style({
   "@media": {
@@ -83,25 +78,25 @@ export const imageHolder = style({
       justifyContent: "center",
       marginRight: "335px",
       minHeight: "450px",
-      backgroundColor: whiteSecondary
-    }
-  }
+      backgroundColor: whiteSecondary,
+    },
+  },
 });
 
 export const imageContainer = style([
   block,
   width100,
   {
-    backgroundColor: grey
-  }
+    backgroundColor: grey,
+  },
 ]);
 
 export const imageOverflow = style([
   block,
   {
     overflow: "hidden",
-    paddingBottom: "100%"
-  }
+    paddingBottom: "100%",
+  },
 ]);
 
 export const imageStyle = style([
@@ -112,8 +107,8 @@ export const imageStyle = style([
     height: "100%",
     userSelect: "none",
     left: 0,
-    top: 0
-  }
+    top: 0,
+  },
 ]);
 
 export const contentWrap = style({
@@ -133,23 +128,52 @@ export const contentWrap = style({
       overflowX: "hidden",
       "::-webkit-scrollbar": {
         width: "6px",
-        backgroundColor: "#f5f5f5"
+        backgroundColor: "#f5f5f5",
       },
       "::-webkit-scrollbar-track": {
-        backgroundColor: "#f5f5f5"
+        backgroundColor: "#f5f5f5",
       },
       "::-webkit-scrollbar-thumb": {
         backgroundColor: "#999",
-        borderRadius: "4px"
-      }
-    }
-  }
+        borderRadius: "4px",
+      },
+    },
+  },
 });
 
 globalStyle(`${contentWrap} h3`, {
-  marginBottom: 0
+  marginBottom: 0,
 });
 
 globalStyle(`${contentWrap} ul`, {
-  paddingLeft: "22px"
+  paddingLeft: "22px",
+});
+
+export const bodySEOStyle = style({
+  marginTop: "8px",
+  lineHeight: "1.75",
+  fontSize: "1.17rem",
+  "h2, h3, h4, h5": {
+    margin: 0,
+  },
+  p: {
+    marginBottom: "1rem",
+    marginTop: 0,
+  },
+  ".wp-caption, img": {
+    maxWidth: "100%",
+    height: "auto",
+  },
+  ol: {
+    paddingInlineStart: "20px",
+  },
+  "@media": {
+    "(max-width: 500px)": {
+      padding: "0 16px",
+      iframe: {
+        maxWidth: "100%",
+        height: "60vw",
+      },
+    },
+  },
 });

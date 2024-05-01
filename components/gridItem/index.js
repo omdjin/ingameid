@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -6,7 +7,7 @@ import {
   itemContainer,
   itemImage,
   itemOverlay,
-  itemWrapper
+  itemWrapper,
 } from "./styles.css";
 
 const GridItem = ({ detail }) => {
@@ -19,10 +20,13 @@ const GridItem = ({ detail }) => {
       <Link href={`/products/${detail.slug}`}>
         <div className={itemWrapper}>
           <div className={itemContainer}>
-            <img
+            <Image
               src={mediaSizes.medium.source_url}
               alt={featuredmedia.alt_text}
               className={itemImage}
+              width={283}
+              height={283}
+              priority
             />
           </div>
           <div className={itemClear} />

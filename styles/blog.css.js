@@ -17,6 +17,10 @@ export const mainContent = style([
   },
 ]);
 
+export const titleStyle = style({
+  fontSize: "2em",
+});
+
 export const bodyStyle = style({
   lineHeight: "1.75",
   fontSize: "1.17rem",
@@ -34,12 +38,15 @@ export const bodyStyle = style({
   ol: {
     paddingInlineStart: "20px",
   },
+  "@media": {
+    "(max-width: 500px)": {
+      iframe: {
+        maxWidth: "100%",
+        height: "60vw",
+      },
+    },
+  },
 });
-
-// globalStyle(`${bodyStyle} img`, {
-//   maxWidth: "100%",
-//   height: "auto",
-// });
 
 globalStyle(`${bodyStyle} ol`, {
   paddingInlineStart: "20px",
