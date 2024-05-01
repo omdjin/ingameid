@@ -7,7 +7,7 @@ import {
   whiteBg,
   width100,
 } from "styles/misc.css";
-import { blackPrimary, borderBlack } from "styles/colors";
+import { blackPrimary, borderBlack, orangePrimary } from "styles/colors";
 
 export const headerClass = style([
   flex,
@@ -76,4 +76,28 @@ export const headerBrandLabel = style({
   marginTop: "3px",
   fontWeight: 600,
   color: blackPrimary,
+  ":hover": {
+    color: orangePrimary,
+  },
+});
+
+export const styNavDefault = style({
+  a: {
+    paddingLeft: "6px",
+    paddingRight: "6px",
+    color: blackPrimary,
+    fontWeight: 600,
+    borderLeft: `2px solid ${orangePrimary}`,
+  },
+  "a:hover": {
+    color: orangePrimary,
+  },
+  "a:first-child": {
+    border: 0,
+  },
+  "@media": {
+    "(max-width: 500px)": {
+      visibility: "hidden",
+    },
+  },
 });

@@ -30,7 +30,7 @@ export default function TagPage({ tagDetail, blogs }) {
       </Head>
       <div className={container}>
         <div>
-          <h1 className={heading}>Tag: {tagDetail.name}</h1>
+          <h1 className={heading}>{tagDetail.name}</h1>
         </div>
         <div>
           <div className={row}>

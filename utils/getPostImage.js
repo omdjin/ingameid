@@ -1,5 +1,5 @@
 const getPostImage = (blogPost) => {
-  const featuredmedia = blogPost._embedded["wp:featuredmedia"]?.[0];
+  const featuredmedia = blogPost._embedded?.["wp:featuredmedia"]?.[0];
 
   if (!featuredmedia) {
     return {

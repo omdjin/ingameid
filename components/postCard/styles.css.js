@@ -1,5 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
+import { blackPrimary, orangePrimary } from "styles/colors";
+
 export const postItem = style({
   display: "block",
   flex: "0 0 50%",
@@ -22,7 +24,7 @@ export const postItem = style({
   },
   ":hover": {
     "h2 > a": {
-      color: "#2f8a95",
+      color: orangePrimary,
     },
     img: {
       transform: "scale(1.15)",
@@ -36,7 +38,7 @@ export const postItem = style({
   },
   ".meta": {
     fontSize: "0.7rem",
-    color: "#393838",
+    color: blackPrimary,
   },
   "@media": {
     "(max-width: 500px)": {

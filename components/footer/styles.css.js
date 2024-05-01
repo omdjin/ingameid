@@ -1,17 +1,17 @@
 import { style } from "@vanilla-extract/css";
 
 import { width100 } from "styles/misc.css";
-import { grey } from "styles/colors";
+import { grey, blackPrimary, orangePrimary } from "styles/colors";
 
 export const footerStyle = style({
   order: 2,
-  padding: "0 20px"
+  padding: "0 20px",
 });
 
 export const contentStyle = style([
   width100,
   {
-    maxWidth: "935px",
+    maxWidth: "1010px",
     fontSize: "12px",
     fontWeight: 600,
     margin: "0 auto",
@@ -21,13 +21,25 @@ export const contentStyle = style([
       "(min-width: 876px)": {
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "space-between"
-      }
-    }
-  }
+        justifyContent: "space-between",
+      },
+    },
+  },
 ]);
 
 export const footerSpan = style({
   textTransform: "unset",
-  color: "#4f4f4f"
+  color: "#4f4f4f",
+  alignSelf: "center",
+});
+
+export const pagesStyle = style({
+  display: "inline",
+  a: {
+    marginLeft: "8px",
+    color: blackPrimary,
+  },
+  "a:hover": {
+    color: orangePrimary,
+  },
 });
