@@ -1,5 +1,5 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-
+import { orangePrimary, white } from "styles/colors";
 import { flexGrow, width100 } from "styles/misc.css";
 
 export const mainContent = style([
@@ -27,7 +27,7 @@ export const bodyStyle = style({
   "h2, h3, h4, h5": {
     margin: 0,
   },
-  p: {
+  "p, table": {
     marginBottom: "1rem",
     marginTop: 0,
   },
@@ -37,6 +37,23 @@ export const bodyStyle = style({
   },
   ol: {
     paddingInlineStart: "20px",
+  },
+  table: {
+    border: "0.0625rem solid #404040",
+    borderCollapse: "collapse",
+  },
+  thead: {
+    backgroundColor: orangePrimary,
+    color: white,
+  },
+  "th, td": {
+    border: 0,
+  },
+  tr: {
+    borderTop: "0.0625rem solid #404040",
+  },
+  "tbody td": {
+    padding: "0 8px",
   },
   "@media": {
     "(max-width: 500px)": {
