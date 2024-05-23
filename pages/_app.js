@@ -89,6 +89,11 @@ function MyApp({ Component, pageProps }) {
           content="Jual voucher game online termurah dengan proses yang cepat dan mudah. Main game jadi tambah seru dengan skin keren dan fitur premium. Yuk beli voucher game di Ingame.id sekarang."
         />
         <meta property="fb:app_id" content="498554210181496" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2738763255325000"
+          crossorigin="anonymous"
+        ></script>
       </Head>
       <Component {...pageProps} />
     </Layout>
